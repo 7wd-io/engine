@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	ageI age = iota + 1

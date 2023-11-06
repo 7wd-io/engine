@@ -1,4 +1,4 @@
-package main
+package engine
 
 type Mutator interface {
 	mutate(s *State) error

@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	bonusResources bonus = iota + 1

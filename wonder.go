@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	TheAppianWay WonderId = iota + 1

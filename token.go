@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	Agriculture TokenId = iota + 1

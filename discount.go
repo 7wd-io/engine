@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	dcGlobal discountContext = iota + 1

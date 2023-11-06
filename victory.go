@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	Civilian Victory = iota + 1

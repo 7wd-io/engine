@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	symbolAstrology symbol = iota + 1

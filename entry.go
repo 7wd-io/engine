@@ -1,4 +1,4 @@
-package main
+package engine
 
 func StateFrom(m ...Mutator) (*State, error) {
 	s := new(State)

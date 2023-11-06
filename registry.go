@@ -1,4 +1,4 @@
-package main
+package engine
 
 var R = registry{
 	Wonders: map[WonderId]wonder{

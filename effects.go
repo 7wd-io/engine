@@ -1,4 +1,4 @@
-package main
+package engine
 
 const (
 	effectBurnCard effectId = iota + 1

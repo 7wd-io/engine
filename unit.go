@@ -1,4 +1,4 @@
-package main
+package engine
 
 type unit struct {
 	Effects []interface{} `json:"effects"`

@@ -1,3 +1,3 @@
-package main
+package engine
 
 type Nickname string
