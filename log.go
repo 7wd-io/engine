@@ -52,8 +52,8 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 		//
 		//moveBytes := []byte()
 
-		switch moveId(record.Move["id"].(float64)) {
-		case mPrepare:
+		switch MoveId(record.Move["id"].(float64)) {
+		case MovePrepare:
 			var m1 prepareMove
 
 			if err := json.Unmarshal(rawMove, &m1); err != nil {
@@ -64,7 +64,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m1,
 				Meta: record.Meta,
 			}
-		case mPickWonder:
+		case MovePickWonder:
 			var m2 pickWonderMove
 
 			if err := json.Unmarshal(rawMove, &m2); err != nil {
@@ -75,7 +75,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m2,
 				Meta: record.Meta,
 			}
-		case mPickBoardToken:
+		case MovePickBoardToken:
 			var m3 pickBoardTokenMove
 
 			if err := json.Unmarshal(rawMove, &m3); err != nil {
@@ -86,7 +86,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m3,
 				Meta: record.Meta,
 			}
-		case mConstructCard:
+		case MoveConstructCard:
 			var m4 constructCardMove
 
 			if err := json.Unmarshal(rawMove, &m4); err != nil {
@@ -97,7 +97,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m4,
 				Meta: record.Meta,
 			}
-		case mConstructWonder:
+		case MoveConstructWonder:
 			var m5 constructWonderMove
 
 			if err := json.Unmarshal(rawMove, &m5); err != nil {
@@ -108,7 +108,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m5,
 				Meta: record.Meta,
 			}
-		case mDiscardCard:
+		case MoveDiscardCard:
 			var m6 discardCardMove
 
 			if err := json.Unmarshal(rawMove, &m6); err != nil {
@@ -119,7 +119,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m6,
 				Meta: record.Meta,
 			}
-		case mSelectWhoBeginsTheNextAge:
+		case MoveSelectWhoBeginsTheNextAge:
 			var m7 selectWhoBeginsTheNextAgeMove
 
 			if err := json.Unmarshal(rawMove, &m7); err != nil {
@@ -130,7 +130,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m7,
 				Meta: record.Meta,
 			}
-		case mBurnCard:
+		case MoveBurnCard:
 			var m8 burnCardMove
 
 			if err := json.Unmarshal(rawMove, &m8); err != nil {
@@ -141,7 +141,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m8,
 				Meta: record.Meta,
 			}
-		case mPickRandomToken:
+		case MovePickRandomToken:
 			var m9 pickRandomTokenMove
 
 			if err := json.Unmarshal(rawMove, &m9); err != nil {
@@ -152,7 +152,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m9,
 				Meta: record.Meta,
 			}
-		case mPickTopLineCard:
+		case MovePickTopLineCard:
 			var m10 pickTopLineCardMove
 
 			if err := json.Unmarshal(rawMove, &m10); err != nil {
@@ -163,7 +163,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m10,
 				Meta: record.Meta,
 			}
-		case mPickDiscardedCard:
+		case MovePickDiscardedCard:
 			var m11 pickDiscardedCardMove
 
 			if err := json.Unmarshal(rawMove, &m11); err != nil {
@@ -174,7 +174,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m11,
 				Meta: record.Meta,
 			}
-		case mPickReturnedCards:
+		case MovePickReturnedCards:
 			var m12 pickReturnedCardsMove
 
 			if err := json.Unmarshal(rawMove, &m12); err != nil {
@@ -185,7 +185,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Move: m12,
 				Meta: record.Meta,
 			}
-		case mOver:
+		case MoveOver:
 			var m13 overMove
 
 			if err := json.Unmarshal(rawMove, &m13); err != nil {

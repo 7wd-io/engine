@@ -7,25 +7,25 @@ import (
 )
 
 const (
-	mPrepare moveId = iota + 1
-	mPickWonder
-	mPickBoardToken
-	mConstructCard
-	mConstructWonder
-	mDiscardCard
-	mSelectWhoBeginsTheNextAge
-	mBurnCard
-	mPickRandomToken
-	mPickTopLineCard
-	mPickDiscardedCard
-	mPickReturnedCards
-	mOver
+	MovePrepare MoveId = iota + 1
+	MovePickWonder
+	MovePickBoardToken
+	MoveConstructCard
+	MoveConstructWonder
+	MoveDiscardCard
+	MoveSelectWhoBeginsTheNextAge
+	MoveBurnCard
+	MovePickRandomToken
+	MovePickTopLineCard
+	MovePickDiscardedCard
+	MovePickReturnedCards
+	MoveOver
 )
 
-type moveId int
+type MoveId int
 
 type move struct {
-	Id moveId `json:"id"`
+	Id MoveId `json:"id"`
 }
 
 func NewMovePrepare(p1, p2 Nickname) Mutator {
@@ -44,7 +44,7 @@ func NewMovePrepare(p1, p2 Nickname) Mutator {
 	}
 
 	return prepareMove{
-		move:         move{mPrepare},
+		move:         move{MovePrepare},
 		P1:           p1,
 		P2:           p2,
 		Wonders:      w[:wonderSelectionPoolSize*2],
@@ -91,7 +91,7 @@ func (dst prepareMove) mutate(s *State) error {
 
 func NewMovePickWonder(w WonderId) Mutator {
 	return pickWonderMove{
-		move:   move{mPickWonder},
+		move:   move{MovePickWonder},
 		Wonder: w,
 	}
 }
@@ -154,7 +154,7 @@ func (dst pickWonderMove) mutate(s *State) error {
 
 func NewMoveSelectWhoBeginsTheNextAge(n Nickname) Mutator {
 	return selectWhoBeginsTheNextAgeMove{
-		move:   move{mSelectWhoBeginsTheNextAge},
+		move:   move{MoveSelectWhoBeginsTheNextAge},
 		Player: n,
 	}
 }
@@ -178,7 +178,7 @@ func (dst selectWhoBeginsTheNextAgeMove) mutate(s *State) error {
 
 func NewMovePickBoardToken(t TokenId) Mutator {
 	return pickBoardTokenMove{
-		move:  move{mPickBoardToken},
+		move:  move{MovePickBoardToken},
 		Token: t,
 	}
 }
@@ -232,7 +232,7 @@ func (dst pickBoardTokenMove) mutate(s *State) error {
 
 func NewMovePickRandomToken(t TokenId) Mutator {
 	return pickRandomTokenMove{
-		move:  move{mPickRandomToken},
+		move:  move{MovePickRandomToken},
 		Token: t,
 	}
 }
@@ -273,7 +273,7 @@ func (dst pickRandomTokenMove) mutate(s *State) error {
 
 func NewMoveConstructCard(c CardId) Mutator {
 	return constructCardMove{
-		move: move{mConstructCard},
+		move: move{MoveConstructCard},
 		Card: c,
 	}
 }
@@ -317,7 +317,7 @@ func (dst constructCardMove) mutate(s *State) error {
 
 func NewMoveConstructWonder(w WonderId, c CardId) Mutator {
 	return constructWonderMove{
-		move:   move{mConstructWonder},
+		move:   move{MoveConstructWonder},
 		Wonder: w,
 		Card:   c,
 	}
@@ -376,7 +376,7 @@ func (dst constructWonderMove) mutate(s *State) error {
 
 func NewMoveDiscardCard(c CardId) Mutator {
 	return discardCardMove{
-		move: move{mDiscardCard},
+		move: move{MoveDiscardCard},
 		Card: c,
 	}
 }
@@ -406,7 +406,7 @@ func (dst discardCardMove) mutate(s *State) error {
 
 func NewMoveBurnCard(c CardId) Mutator {
 	return burnCardMove{
-		move: move{mBurnCard},
+		move: move{MoveBurnCard},
 		Card: c,
 	}
 }
@@ -445,7 +445,7 @@ func (dst burnCardMove) mutate(s *State) error {
 
 func NewMovePickTopLineCard(c CardId) Mutator {
 	return pickTopLineCardMove{
-		move: move{mPickTopLineCard},
+		move: move{MovePickTopLineCard},
 		Card: c,
 	}
 }
@@ -488,7 +488,7 @@ func (dst pickTopLineCardMove) mutate(s *State) error {
 
 func NewMovePickDiscardedCard(c CardId) Mutator {
 	return pickDiscardedCardMove{
-		move: move{mPickDiscardedCard},
+		move: move{MovePickDiscardedCard},
 		Card: c,
 	}
 }
@@ -530,7 +530,7 @@ func (dst pickDiscardedCardMove) mutate(s *State) error {
 
 func NewMovePickReturnedCards(p CardId, g CardId) Mutator {
 	return pickReturnedCardsMove{
-		move: move{mPickReturnedCards},
+		move: move{MovePickReturnedCards},
 		Pick: p,
 		Give: g,
 	}
@@ -592,7 +592,7 @@ func (dst pickReturnedCardsMove) isValidCards(s *State) bool {
 
 func NewMoveOver(loser Nickname, reason Victory) Mutator {
 	return overMove{
-		move:   move{mOver},
+		move:   move{MoveOver},
 		Loser:  loser,
 		Reason: reason,
 	}
@@ -627,8 +627,8 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			log.Fatalln(err)
 		}
 
-		switch moveId(m["id"].(float64)) {
-		case mPrepare:
+		switch MoveId(m["id"].(float64)) {
+		case MovePrepare:
 			var m1 prepareMove
 
 			if err := json.Unmarshal(*message, &m1); err != nil {
@@ -636,7 +636,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m1
-		case mPickWonder:
+		case MovePickWonder:
 			var m2 pickWonderMove
 
 			if err := json.Unmarshal(*message, &m2); err != nil {
@@ -644,7 +644,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m2
-		case mPickBoardToken:
+		case MovePickBoardToken:
 			var m3 pickBoardTokenMove
 
 			if err := json.Unmarshal(*message, &m3); err != nil {
@@ -652,7 +652,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m3
-		case mConstructCard:
+		case MoveConstructCard:
 			var m4 constructCardMove
 
 			if err := json.Unmarshal(*message, &m4); err != nil {
@@ -660,7 +660,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m4
-		case mConstructWonder:
+		case MoveConstructWonder:
 			var m5 constructWonderMove
 
 			if err := json.Unmarshal(*message, &m5); err != nil {
@@ -668,7 +668,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m5
-		case mDiscardCard:
+		case MoveDiscardCard:
 			var m6 discardCardMove
 
 			if err := json.Unmarshal(*message, &m6); err != nil {
@@ -676,7 +676,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m6
-		case mSelectWhoBeginsTheNextAge:
+		case MoveSelectWhoBeginsTheNextAge:
 			var m7 selectWhoBeginsTheNextAgeMove
 
 			if err := json.Unmarshal(*message, &m7); err != nil {
@@ -684,7 +684,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m7
-		case mBurnCard:
+		case MoveBurnCard:
 			var m8 burnCardMove
 
 			if err := json.Unmarshal(*message, &m8); err != nil {
@@ -692,7 +692,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m8
-		case mPickRandomToken:
+		case MovePickRandomToken:
 			var m9 pickRandomTokenMove
 
 			if err := json.Unmarshal(*message, &m9); err != nil {
@@ -700,7 +700,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m9
-		case mPickTopLineCard:
+		case MovePickTopLineCard:
 			var m10 pickTopLineCardMove
 
 			if err := json.Unmarshal(*message, &m10); err != nil {
@@ -708,7 +708,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m10
-		case mPickDiscardedCard:
+		case MovePickDiscardedCard:
 			var m11 pickDiscardedCardMove
 
 			if err := json.Unmarshal(*message, &m11); err != nil {
@@ -716,7 +716,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m11
-		case mPickReturnedCards:
+		case MovePickReturnedCards:
 			var m12 pickReturnedCardsMove
 
 			if err := json.Unmarshal(*message, &m12); err != nil {
@@ -724,7 +724,7 @@ func (dst *Moves) UnmarshalJSON(bytes []byte) error {
 			}
 
 			v[index] = m12
-		case mOver:
+		case MoveOver:
 			var m13 overMove
 
 			if err := json.Unmarshal(*message, &m13); err != nil {
@@ -751,68 +751,68 @@ func UnmarshalMove(move []byte) (Mutator, error) {
 		return nil, err
 	}
 
-	switch moveId(m["id"].(float64)) {
-	case mPrepare:
+	switch MoveId(m["id"].(float64)) {
+	case MovePrepare:
 		var m1 prepareMove
 		err = json.Unmarshal(move, &m1)
 
 		return m1, err
-	case mPickWonder:
+	case MovePickWonder:
 		var m2 pickWonderMove
 		err = json.Unmarshal(move, &m2)
 
 		return m2, err
-	case mPickBoardToken:
+	case MovePickBoardToken:
 		var m3 pickBoardTokenMove
 		err = json.Unmarshal(move, &m3)
 
 		return m3, err
-	case mConstructCard:
+	case MoveConstructCard:
 		var m4 constructCardMove
 		err = json.Unmarshal(move, &m4)
 
 		return m4, err
-	case mConstructWonder:
+	case MoveConstructWonder:
 		var m5 constructWonderMove
 		err = json.Unmarshal(move, &m5)
 
 		return m5, err
-	case mDiscardCard:
+	case MoveDiscardCard:
 		var m6 discardCardMove
 		err = json.Unmarshal(move, &m6)
 
 		return m6, err
-	case mSelectWhoBeginsTheNextAge:
+	case MoveSelectWhoBeginsTheNextAge:
 		var m7 selectWhoBeginsTheNextAgeMove
 		err = json.Unmarshal(move, &m7)
 
 		return m7, err
-	case mBurnCard:
+	case MoveBurnCard:
 		var m8 burnCardMove
 		err = json.Unmarshal(move, &m8)
 
 		return m8, err
-	case mPickRandomToken:
+	case MovePickRandomToken:
 		var m9 pickRandomTokenMove
 		err = json.Unmarshal(move, &m9)
 
 		return m9, err
-	case mPickTopLineCard:
+	case MovePickTopLineCard:
 		var m10 pickTopLineCardMove
 		err = json.Unmarshal(move, &m10)
 
 		return m10, err
-	case mPickDiscardedCard:
+	case MovePickDiscardedCard:
 		var m11 pickDiscardedCardMove
 		err = json.Unmarshal(move, &m11)
 
 		return m11, err
-	case mPickReturnedCards:
+	case MovePickReturnedCards:
 		var m12 pickReturnedCardsMove
 		err = json.Unmarshal(move, &m12)
 
 		return m12, err
-	case mOver:
+	case MoveOver:
 		var m13 overMove
 		err = json.Unmarshal(move, &m13)
 
