@@ -41,7 +41,7 @@ type burnCardEffect struct {
 	Group cardGroup `json:"group"`
 }
 
-func (dst burnCardEffect) mutate(s *State) error {
+func (dst burnCardEffect) Mutate(s *State) error {
 	items := s.Enemy.Cards.Data[dst.Group]
 
 	if len(items) == 0 {
@@ -74,7 +74,7 @@ type chainEffect struct {
 	Card CardId `json:"card"`
 }
 
-func (dst chainEffect) mutate(s *State) error {
+func (dst chainEffect) Mutate(s *State) error {
 	s.Me.Chains.add(dst.Card)
 
 	return nil
@@ -92,7 +92,7 @@ type coinsEffect struct {
 	Count int `json:"count"`
 }
 
-func (dst coinsEffect) mutate(s *State) error {
+func (dst coinsEffect) Mutate(s *State) error {
 	s.Me.Treasure.add(dst.Count)
 
 	return nil
@@ -112,7 +112,7 @@ type coinsForEffect struct {
 	Count int   `json:"count"`
 }
 
-func (dst coinsForEffect) mutate(s *State) error {
+func (dst coinsForEffect) Mutate(s *State) error {
 	s.Me.Treasure.add(s.Me.bonusRate(dst.Bonus) * dst.Count)
 
 	return nil
@@ -134,7 +134,7 @@ type discounterEffect struct {
 	discount  discountContext
 }
 
-func (dst discounterEffect) mutate(s *State) error {
+func (dst discounterEffect) Mutate(s *State) error {
 	set := make(resourceSet, len(dst.Resources))
 
 	for _, r := range dst.Resources {
@@ -162,7 +162,7 @@ type fineEffect struct {
 	Coins int `json:"coins"`
 }
 
-func (dst fineEffect) mutate(s *State) error {
+func (dst fineEffect) Mutate(s *State) error {
 	s.Enemy.Treasure.add(-dst.Coins)
 
 	return nil
@@ -180,7 +180,7 @@ type fixedCostEffect struct {
 	Resources resourceList `json:"resources"`
 }
 
-func (dst fixedCostEffect) mutate(s *State) error {
+func (dst fixedCostEffect) Mutate(s *State) error {
 	for _, r := range dst.Resources {
 		s.Me.Bank.setResourcePrice(r, fixedResourceCost)
 	}
@@ -204,13 +204,13 @@ type guildEffect struct {
 	Coins  int   `json:"coins"`
 }
 
-func (dst guildEffect) mutate(s *State) error {
+func (dst guildEffect) Mutate(s *State) error {
 	s.Me.Treasure.add(dst.rate(s.Me, s.Enemy) * dst.Coins)
 
 	return nil
 }
 
-func (dst guildEffect) getPoints(s *State) int {
+func (dst guildEffect) GetPoints(s *State) int {
 	return dst.rate(s.Me, s.Enemy) * dst.Points
 }
 
@@ -235,7 +235,7 @@ type mathematicsEffect struct {
 	effect
 }
 
-func (dst mathematicsEffect) getPoints(s *State) int {
+func (dst mathematicsEffect) GetPoints(s *State) int {
 	return len(s.Me.Tokens.List) * 3
 }
 
@@ -265,7 +265,7 @@ type militaryEffect struct {
 	strategyDisabled bool
 }
 
-func (dst militaryEffect) mutate(s *State) error {
+func (dst militaryEffect) Mutate(s *State) error {
 	power := dst.Power
 
 	if !dst.strategyDisabled && s.Me.Tokens.has(Strategy) {
@@ -295,7 +295,7 @@ type pickDiscardedCardEffect struct {
 	effect
 }
 
-func (dst pickDiscardedCardEffect) mutate(s *State) error {
+func (dst pickDiscardedCardEffect) Mutate(s *State) error {
 	items := s.CardItems.Discarded
 
 	if len(items) == 0 {
@@ -325,7 +325,7 @@ type pickTopLineCardEffect struct {
 	effect
 }
 
-func (dst pickTopLineCardEffect) mutate(s *State) error {
+func (dst pickTopLineCardEffect) Mutate(s *State) error {
 	items := s.Deck.topLineCards()
 
 	if len(items) == 0 {
@@ -354,7 +354,7 @@ type pickReturnedCardsEffect struct {
 	effect
 }
 
-func (dst pickReturnedCardsEffect) mutate(s *State) error {
+func (dst pickReturnedCardsEffect) Mutate(s *State) error {
 	s.pushDialog(func(name Nickname) mutator {
 		return func(s *State) {
 			s.Phase = phasePickReturnedCards
@@ -376,7 +376,7 @@ type pickBoardTokenEffect struct {
 	effect
 }
 
-func (dst pickBoardTokenEffect) mutate(s *State) error {
+func (dst pickBoardTokenEffect) Mutate(s *State) error {
 	s.pushDialog(func(name Nickname) mutator {
 		return func(s *State) {
 			s.Phase = phasePickBoardToken
@@ -399,7 +399,7 @@ type pickRandomTokenEffect struct {
 	effect
 }
 
-func (dst pickRandomTokenEffect) mutate(s *State) error {
+func (dst pickRandomTokenEffect) Mutate(s *State) error {
 	s.pushDialog(func(name Nickname) mutator {
 		return func(s *State) {
 			s.Phase = phasePickRandomToken
@@ -422,7 +422,7 @@ type playAgainEffect struct {
 	effect
 }
 
-func (dst playAgainEffect) mutate(s *State) error {
+func (dst playAgainEffect) Mutate(s *State) error {
 	s.PlayAgain = true
 
 	return nil
@@ -440,7 +440,7 @@ type pointsEffect struct {
 	Count int `json:"count"`
 }
 
-func (dst pointsEffect) getPoints(s *State) int {
+func (dst pointsEffect) GetPoints(s *State) int {
 	return dst.Count
 }
 
@@ -458,7 +458,7 @@ type resourceEffect struct {
 	Resources resourceMap `json:"resources"`
 }
 
-func (dst resourceEffect) mutate(s *State) error {
+func (dst resourceEffect) Mutate(s *State) error {
 	for r, count := range dst.Resources {
 		s.Me.Resources[r] += count
 
@@ -470,7 +470,7 @@ func (dst resourceEffect) mutate(s *State) error {
 	return nil
 }
 
-func (dst resourceEffect) burn(s *State) {
+func (dst resourceEffect) Burn(s *State) {
 	for r, count := range dst.Resources {
 		s.Enemy.Resources[r] -= count
 
@@ -492,10 +492,10 @@ type scienceEffect struct {
 	Symbol symbol `json:"symbol"`
 }
 
-func (dst scienceEffect) mutate(s *State) error {
+func (dst scienceEffect) Mutate(s *State) error {
 	switch s.Me.Symbols.add(dst.Symbol) {
 	case symbolStatusToken:
-		return newEffectPickBoardToken().mutate(s)
+		return newEffectPickBoardToken().Mutate(s)
 	case symbolStatusSupremacy:
 		s.over(ScienceSupremacy, s.Me.Name)
 	}
@@ -513,7 +513,7 @@ type discardRewardAdjusterEffect struct {
 	effect
 }
 
-func (dst discardRewardAdjusterEffect) mutate(s *State) error {
+func (dst discardRewardAdjusterEffect) Mutate(s *State) error {
 	s.Me.Bank.setDiscardReward(s.Me.Bank.getDiscardReward() + 1)
 
 	return nil

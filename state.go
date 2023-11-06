@@ -326,7 +326,7 @@ func (dst *city) refreshScore(s *State) {
 	for group, cids := range dst.Cards.Data {
 		for _, cid := range cids {
 			c := R.Cards[cid]
-			points := c.getPoints(s)
+			points := c.GetPoints(s)
 
 			switch group {
 			case groupCivilian:
@@ -343,12 +343,12 @@ func (dst *city) refreshScore(s *State) {
 
 	for wid, cid := range dst.Wonders.Constructed {
 		if !cid.isNil() {
-			scr.Wonders += R.Wonders[wid].getPoints(s)
+			scr.Wonders += R.Wonders[wid].GetPoints(s)
 		}
 	}
 
 	for _, tid := range dst.Tokens.List {
-		scr.Tokens += R.tokens[tid].getPoints(s)
+		scr.Tokens += R.tokens[tid].GetPoints(s)
 	}
 
 	scr.Coins = dst.Treasure.Coins / coinsPerPoint

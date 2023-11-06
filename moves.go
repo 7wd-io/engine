@@ -64,7 +64,7 @@ type PrepareMove struct {
 	Cards        map[age]cardList `json:"cards"`
 }
 
-func (dst PrepareMove) mutate(s *State) error {
+func (dst PrepareMove) Mutate(s *State) error {
 	if s.Phase != phaseNil {
 		return ErrActionNotAllowed
 	}
@@ -101,7 +101,7 @@ type PickWonderMove struct {
 	Wonder WonderId `json:"wonder"`
 }
 
-func (dst PickWonderMove) mutate(s *State) error {
+func (dst PickWonderMove) Mutate(s *State) error {
 	if s.Phase != phasePrepare {
 		return ErrActionNotAllowed
 	}
@@ -164,7 +164,7 @@ type SelectWhoBeginsTheNextAgeMove struct {
 	Player Nickname `json:"player"`
 }
 
-func (dst SelectWhoBeginsTheNextAgeMove) mutate(s *State) error {
+func (dst SelectWhoBeginsTheNextAgeMove) Mutate(s *State) error {
 	if s.Phase != phaseSelectWhoBeginsTheNextAge {
 		return ErrActionNotAllowed
 	}
@@ -188,7 +188,7 @@ type PickBoardTokenMove struct {
 	Token TokenId `json:"token"`
 }
 
-func (dst PickBoardTokenMove) mutate(s *State) error {
+func (dst PickBoardTokenMove) Mutate(s *State) error {
 	if s.Phase != phasePickBoardToken {
 		return ErrActionNotAllowed
 	}
@@ -208,7 +208,7 @@ func (dst PickBoardTokenMove) mutate(s *State) error {
 
 	s.Me.Tokens.add(dst.Token)
 
-	if err := R.tokens[dst.Token].mutate(s); err != nil {
+	if err := R.tokens[dst.Token].Mutate(s); err != nil {
 		return err
 	}
 
@@ -242,7 +242,7 @@ type PickRandomTokenMove struct {
 	Token TokenId `json:"token"`
 }
 
-func (dst PickRandomTokenMove) mutate(s *State) error {
+func (dst PickRandomTokenMove) Mutate(s *State) error {
 	if s.Phase != phasePickRandomToken {
 		return ErrActionNotAllowed
 	}
@@ -262,7 +262,7 @@ func (dst PickRandomTokenMove) mutate(s *State) error {
 
 	s.Me.Tokens.add(dst.Token)
 
-	if err := R.tokens[dst.Token].mutate(s); err != nil {
+	if err := R.tokens[dst.Token].Mutate(s); err != nil {
 		return err
 	}
 
@@ -283,7 +283,7 @@ type ConstructCardMove struct {
 	Card CardId `json:"card"`
 }
 
-func (dst ConstructCardMove) mutate(s *State) error {
+func (dst ConstructCardMove) Mutate(s *State) error {
 	if s.Phase != PhaseTurn {
 		return ErrActionNotAllowed
 	}
@@ -306,7 +306,7 @@ func (dst ConstructCardMove) mutate(s *State) error {
 
 	s.Deck.removeCard(dst.Card)
 
-	if err := R.Cards[dst.Card].mutate(s); err != nil {
+	if err := R.Cards[dst.Card].Mutate(s); err != nil {
 		return err
 	}
 
@@ -329,7 +329,7 @@ type ConstructWonderMove struct {
 	Card   CardId   `json:"card"`
 }
 
-func (dst ConstructWonderMove) mutate(s *State) error {
+func (dst ConstructWonderMove) Mutate(s *State) error {
 	if s.Phase != PhaseTurn {
 		return ErrActionNotAllowed
 	}
@@ -361,7 +361,7 @@ func (dst ConstructWonderMove) mutate(s *State) error {
 		s.Enemy.Wonders.removeNotConstructed()
 	}
 
-	if err := R.Wonders[dst.Wonder].mutate(s); err != nil {
+	if err := R.Wonders[dst.Wonder].Mutate(s); err != nil {
 		return err
 	}
 
@@ -386,7 +386,7 @@ type DiscardCardMove struct {
 	Card CardId `json:"card"`
 }
 
-func (dst DiscardCardMove) mutate(s *State) error {
+func (dst DiscardCardMove) Mutate(s *State) error {
 	if s.Phase != PhaseTurn {
 		return ErrActionNotAllowed
 	}
@@ -416,7 +416,7 @@ type BurnCardMove struct {
 	Card CardId `json:"card"`
 }
 
-func (dst BurnCardMove) mutate(s *State) error {
+func (dst BurnCardMove) Mutate(s *State) error {
 	if s.Phase != phaseBurnCard {
 		return ErrActionNotAllowed
 	}
@@ -436,7 +436,7 @@ func (dst BurnCardMove) mutate(s *State) error {
 
 	s.Enemy.Cards.remove(dst.Card)
 
-	R.Cards[dst.Card].burn(s)
+	R.Cards[dst.Card].Burn(s)
 
 	s.after()
 
@@ -455,7 +455,7 @@ type PickTopLineCardMove struct {
 	Card CardId `json:"card"`
 }
 
-func (dst PickTopLineCardMove) mutate(s *State) error {
+func (dst PickTopLineCardMove) Mutate(s *State) error {
 	if s.Phase != phasePickTopLineCard {
 		return ErrActionNotAllowed
 	}
@@ -477,7 +477,7 @@ func (dst PickTopLineCardMove) mutate(s *State) error {
 
 	s.Deck.removeCard(dst.Card)
 
-	if err := R.Cards[dst.Card].mutate(s); err != nil {
+	if err := R.Cards[dst.Card].Mutate(s); err != nil {
 		return err
 	}
 
@@ -498,7 +498,7 @@ type PickDiscardedCardMove struct {
 	Card CardId `json:"card"`
 }
 
-func (dst PickDiscardedCardMove) mutate(s *State) error {
+func (dst PickDiscardedCardMove) Mutate(s *State) error {
 	if s.Phase != phasePickDiscardedCard {
 		return ErrActionNotAllowed
 	}
@@ -519,7 +519,7 @@ func (dst PickDiscardedCardMove) mutate(s *State) error {
 	s.Me.Cards.add(dst.Card)
 	s.CardItems.removeDiscarded(dst.Card)
 
-	if err := R.Cards[dst.Card].mutate(s); err != nil {
+	if err := R.Cards[dst.Card].Mutate(s); err != nil {
 		return err
 	}
 
@@ -542,7 +542,7 @@ type PickReturnedCardsMove struct {
 	Give CardId `json:"give"`
 }
 
-func (dst PickReturnedCardsMove) mutate(s *State) error {
+func (dst PickReturnedCardsMove) Mutate(s *State) error {
 	if s.Phase != phasePickReturnedCards {
 		return ErrActionNotAllowed
 	}
@@ -553,12 +553,12 @@ func (dst PickReturnedCardsMove) mutate(s *State) error {
 
 	s.byCity(s.Me.Name, func() {
 		s.Me.Cards.add(dst.Pick)
-		_ = R.Cards[dst.Pick].mutate(s)
+		_ = R.Cards[dst.Pick].Mutate(s)
 	})
 
 	s.byCity(s.Enemy.Name, func() {
 		s.Me.Cards.add(dst.Give)
-		_ = R.Cards[dst.Give].mutate(s)
+		_ = R.Cards[dst.Give].Mutate(s)
 	})
 
 	s.after()
@@ -604,7 +604,7 @@ type OverMove struct {
 	Reason Victory  `json:"reason"`
 }
 
-func (dst OverMove) mutate(s *State) error {
+func (dst OverMove) Mutate(s *State) error {
 	s.over(dst.Reason, s.enemyFor(dst.Loser))
 
 	return nil

@@ -4,7 +4,7 @@ type unit struct {
 	Effects []interface{} `json:"effects"`
 }
 
-func (dst unit) mutate(s *State) error {
+func (dst unit) Mutate(s *State) error {
 	for _, v := range dst.Effects {
 		eff, ok := v.(Mutator)
 
@@ -12,7 +12,7 @@ func (dst unit) mutate(s *State) error {
 			continue
 		}
 
-		if err := eff.mutate(s); err != nil {
+		if err := eff.Mutate(s); err != nil {
 			return err
 		}
 	}
@@ -20,29 +20,29 @@ func (dst unit) mutate(s *State) error {
 	return nil
 }
 
-func (dst unit) burn(s *State) {
+func (dst unit) Burn(s *State) {
 	for _, v := range dst.Effects {
-		eff, ok := v.(burner)
+		eff, ok := v.(Burner)
 
 		if !ok {
 			continue
 		}
 
-		eff.burn(s)
+		eff.Burn(s)
 	}
 }
 
-func (dst unit) getPoints(s *State) int {
+func (dst unit) GetPoints(s *State) int {
 	var points int
 
 	for _, v := range dst.Effects {
-		eff, ok := v.(scorable)
+		eff, ok := v.(Scorable)
 
 		if !ok {
 			continue
 		}
 
-		points += eff.getPoints(s)
+		points += eff.GetPoints(s)
 	}
 
 	return points

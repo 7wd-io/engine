@@ -1,15 +1,15 @@
 package engine
 
 type Mutator interface {
-	mutate(s *State) error
+	Mutate(s *State) error
 }
 
 type mutator func(s *State)
 
-type burner interface {
-	burn(s *State)
+type Burner interface {
+	Burn(s *State)
 }
 
-type scorable interface {
-	getPoints(s *State) int
+type Scorable interface {
+	GetPoints(s *State) int
 }
