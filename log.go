@@ -54,7 +54,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 
 		switch MoveId(record.Move["id"].(float64)) {
 		case MovePrepare:
-			var m1 prepareMove
+			var m1 PrepareMove
 
 			if err := json.Unmarshal(rawMove, &m1); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -65,7 +65,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickWonder:
-			var m2 pickWonderMove
+			var m2 PickWonderMove
 
 			if err := json.Unmarshal(rawMove, &m2); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -76,7 +76,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickBoardToken:
-			var m3 pickBoardTokenMove
+			var m3 PickBoardTokenMove
 
 			if err := json.Unmarshal(rawMove, &m3); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -87,7 +87,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveConstructCard:
-			var m4 constructCardMove
+			var m4 ConstructCardMove
 
 			if err := json.Unmarshal(rawMove, &m4); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -98,7 +98,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveConstructWonder:
-			var m5 constructWonderMove
+			var m5 ConstructWonderMove
 
 			if err := json.Unmarshal(rawMove, &m5); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -109,7 +109,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveDiscardCard:
-			var m6 discardCardMove
+			var m6 DiscardCardMove
 
 			if err := json.Unmarshal(rawMove, &m6); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -120,7 +120,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveSelectWhoBeginsTheNextAge:
-			var m7 selectWhoBeginsTheNextAgeMove
+			var m7 SelectWhoBeginsTheNextAgeMove
 
 			if err := json.Unmarshal(rawMove, &m7); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -131,7 +131,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveBurnCard:
-			var m8 burnCardMove
+			var m8 BurnCardMove
 
 			if err := json.Unmarshal(rawMove, &m8); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -142,7 +142,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickRandomToken:
-			var m9 pickRandomTokenMove
+			var m9 PickRandomTokenMove
 
 			if err := json.Unmarshal(rawMove, &m9); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -153,7 +153,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickTopLineCard:
-			var m10 pickTopLineCardMove
+			var m10 PickTopLineCardMove
 
 			if err := json.Unmarshal(rawMove, &m10); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -164,7 +164,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickDiscardedCard:
-			var m11 pickDiscardedCardMove
+			var m11 PickDiscardedCardMove
 
 			if err := json.Unmarshal(rawMove, &m11); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -175,7 +175,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MovePickReturnedCards:
-			var m12 pickReturnedCardsMove
+			var m12 PickReturnedCardsMove
 
 			if err := json.Unmarshal(rawMove, &m12); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
@@ -186,7 +186,7 @@ func (dst *Log) UnmarshalJSON(bytes []byte) error {
 				Meta: record.Meta,
 			}
 		case MoveOver:
-			var m13 overMove
+			var m13 OverMove
 
 			if err := json.Unmarshal(rawMove, &m13); err != nil {
 				panic(fmt.Errorf("moves unmarshal fail: %w", err))
