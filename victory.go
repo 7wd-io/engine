@@ -1,11 +1,11 @@
 package main
 
 const (
-	Civilian victory = iota + 1
+	Civilian Victory = iota + 1
 	MilitarySupremacy
 	ScienceSupremacy
 	Resign
 	Timeout
 )
 
-type victory int
+type Victory int

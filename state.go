@@ -20,7 +20,7 @@ type State struct {
 	DialogItems dialogItems `json:"dialogItems"`
 
 	Winner  *Nickname `json:"winner,omitempty"`
-	Victory *victory  `json:"victory,omitempty"`
+	Victory *Victory  `json:"victory,omitempty"`
 
 	RandomItems randomItems `json:"-"`
 	Deck        *deck       `json:"-"`
@@ -47,7 +47,7 @@ func (dst *State) byCity(nickname Nickname, fn func()) {
 	dst.setTurn(orig)
 }
 
-func (dst *State) over(v victory, winner Nickname) {
+func (dst *State) over(v Victory, winner Nickname) {
 	// we can handle two units for both players at the same time (Statue of Liberty)
 	// and each unit can call over
 	// whoever called first wins

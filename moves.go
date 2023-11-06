@@ -590,7 +590,7 @@ func (dst pickReturnedCardsMove) isValidCards(s *State) bool {
 	return false
 }
 
-func NewMoveOver(loser Nickname, reason victory) Mutator {
+func NewMoveOver(loser Nickname, reason Victory) Mutator {
 	return overMove{
 		move:   move{mOver},
 		Loser:  loser,
@@ -601,7 +601,7 @@ func NewMoveOver(loser Nickname, reason victory) Mutator {
 type overMove struct {
 	move
 	Loser  Nickname `json:"loser"`
-	Reason victory  `json:"reason"`
+	Reason Victory  `json:"reason"`
 }
 
 func (dst overMove) mutate(s *State) error {
