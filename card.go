@@ -101,11 +101,11 @@ func (dst CardId) isNil() bool {
 	return dst == 0
 }
 
-type CardMap map[CardId]card
+type CardMap map[CardId]Card
 type CardList []CardId
-type cardSet map[CardId]struct{}
+type CardSet map[CardId]struct{}
 
-func (dst cardSet) List() CardList {
+func (dst CardSet) List() CardList {
 	out := make(CardList, len(dst))
 
 	i := 0
@@ -120,7 +120,7 @@ func (dst cardSet) List() CardList {
 
 type cardGroup int
 
-type card struct {
+type Card struct {
 	Id    CardId    `json:"id"`
 	Age   age       `json:"age"`
 	Group cardGroup `json:"group"`

@@ -1,7 +1,7 @@
 package engine
 
 var R = registry{
-	Wonders: map[WonderId]wonder{
+	Wonders: map[WonderId]Wonder{
 		TheAppianWay: {
 			Id: TheAppianWay,
 			Cost: cost{
@@ -244,7 +244,7 @@ var R = registry{
 			},
 		},
 	},
-	Cards: map[CardId]card{
+	Cards: map[CardId]Card{
 		LumberYard: {
 			Id:    LumberYard,
 			Age:   ageI,
@@ -1360,7 +1360,7 @@ var R = registry{
 			},
 		},
 	},
-	tokens: map[TokenId]*token{
+	tokens: TokenMap{
 		Agriculture: {
 			unit: unit{
 				Effects: []interface{}{
@@ -1420,7 +1420,6 @@ var R = registry{
 		Strategy: {
 			unit: unit{
 				Effects: []interface{}{
-					// replace has check to decorator?
 					// uses only in has() context
 				},
 			},
@@ -1474,7 +1473,7 @@ type registry struct {
 	wonderIds WonderList
 	guilds    CardList
 	ageCards  map[age]CardList
-	tokens    tokenMap
+	tokens    TokenMap
 	tokenIds  TokenList
 	layouts   map[age]string
 }
@@ -1482,7 +1481,7 @@ type registry struct {
 func init() {
 	var ids WonderList
 
-	for id, _ := range R.Wonders {
+	for id := range R.Wonders {
 		ids = append(ids, id)
 	}
 
@@ -1492,7 +1491,7 @@ func init() {
 func init() {
 	var ids TokenList
 
-	for id, _ := range R.tokens {
+	for id := range R.tokens {
 		ids = append(ids, id)
 	}
 

@@ -300,7 +300,7 @@ type city struct {
 	Bank       bank        `json:"bank"`
 }
 
-func (dst *city) refreshCardsPrice(playable cardSet) {
+func (dst *city) refreshCardsPrice(playable CardSet) {
 	p := make(map[CardId]int)
 
 	for cid, _ := range playable {
@@ -624,7 +624,7 @@ type dialogItems struct {
 
 type cardItems struct {
 	Layout    CardList `json:"layout"`
-	Playable  cardSet  `json:"playable"`
+	Playable  CardSet  `json:"playable"`
 	Discarded CardList `json:"discarded"`
 }
 

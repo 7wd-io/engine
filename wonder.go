@@ -18,7 +18,7 @@ const (
 )
 
 type WonderId int
-type WonderMap map[WonderId]wonder
+type WonderMap map[WonderId]Wonder
 type wonderSearch map[WonderId]struct{}
 type WonderList []WonderId
 
@@ -32,7 +32,7 @@ func (dst WonderList) getWonderSearch() wonderSearch {
 	return out
 }
 
-type wonder struct {
+type Wonder struct {
 	Id   WonderId `json:"id"`
 	Cost cost     `json:"cost"`
 	unit

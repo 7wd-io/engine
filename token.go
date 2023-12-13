@@ -15,8 +15,8 @@ const (
 
 type TokenId int
 type TokenList []TokenId
-type tokenMap map[TokenId]*token
+type TokenMap map[TokenId]Token
 
-type token struct {
+type Token struct {
 	unit
 }

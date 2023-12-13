@@ -8,7 +8,7 @@ func newDeck(cards CardList, layout string) *deck {
 	d := &deck{
 		graph:    make(graph),
 		cards:    cards,
-		faceDown: cardSet{},
+		faceDown: CardSet{},
 		layout:   layout,
 	}
 
@@ -58,7 +58,7 @@ func newDeck(cards CardList, layout string) *deck {
 type deck struct {
 	graph    graph
 	cards    CardList
-	faceDown cardSet
+	faceDown CardSet
 	layout   string
 }
 
@@ -91,8 +91,8 @@ func (dst *deck) getLayout() CardList {
 	return cards
 }
 
-func (dst *deck) playableCards() cardSet {
-	cards := make(cardSet)
+func (dst *deck) playableCards() CardSet {
+	cards := make(CardSet)
 
 	for parent, children := range dst.graph {
 		if children[0] == 0 && children[1] == 0 {
@@ -117,7 +117,7 @@ func (dst *deck) topLineCards() CardList {
 }
 
 func (dst *deck) returnedCards() CardList {
-	search := make(cardSet, len(dst.cards))
+	search := make(CardSet, len(dst.cards))
 
 	for _, cid := range dst.cards {
 		search[cid] = struct{}{}
