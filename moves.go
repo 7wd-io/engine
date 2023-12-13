@@ -37,7 +37,7 @@ func NewMovePrepare(p1, p2 Nickname) Mutator {
 
 	w := shuffleWonders(R.wonderIds)
 
-	c := map[age]cardList{}
+	c := map[age]CardList{}
 
 	for _, a := range []age{ageI, ageII, ageIII} {
 		c[a] = randCards(a)
@@ -58,10 +58,10 @@ type PrepareMove struct {
 	move
 	P1           Nickname         `json:"p1"`
 	P2           Nickname         `json:"p2"`
-	Wonders      wonderList       `json:"wonders"`
-	Tokens       tokenList        `json:"tokens"`
-	RandomTokens tokenList        `json:"randomTokens"`
-	Cards        map[age]cardList `json:"cards"`
+	Wonders      WonderList       `json:"wonders"`
+	Tokens       TokenList        `json:"tokens"`
+	RandomTokens TokenList        `json:"randomTokens"`
+	Cards        map[age]CardList `json:"cards"`
 }
 
 func (dst PrepareMove) Mutate(s *State) error {
@@ -73,7 +73,7 @@ func (dst PrepareMove) Mutate(s *State) error {
 	s.Phase = phasePrepare
 	s.FirstTurn = dst.P1
 
-	s.Tokens = make(tokenList, len(dst.Tokens))
+	s.Tokens = make(TokenList, len(dst.Tokens))
 	copy(s.Tokens, dst.Tokens)
 
 	s.Me = newCity(dst.P1)
@@ -83,7 +83,7 @@ func (dst PrepareMove) Mutate(s *State) error {
 	s.RandomItems.Cards = dst.Cards
 	s.RandomItems.Tokens = dst.RandomTokens
 	s.RandomItems.Wonders = dst.Wonders
-	s.DialogItems.Wonders = make(wonderList, wonderSelectionPoolSize)
+	s.DialogItems.Wonders = make(WonderList, wonderSelectionPoolSize)
 	copy(s.DialogItems.Wonders, dst.Wonders[:wonderSelectionPoolSize])
 
 	return nil

@@ -7,9 +7,9 @@ import (
 func StateFrom(m ...Mutator) (*State, error) {
 	s := new(State)
 
-	for _, v := range m {
+	for k, v := range m {
 		if err := v.Mutate(s); err != nil {
-			return s, err
+			return s, ErrStateFrom(k, v, err)
 		}
 	}
 
@@ -20,7 +20,7 @@ type State struct {
 	Age       age       `json:"age"`
 	Phase     phase     `json:"phase"`
 	FirstTurn Nickname  `json:"firstTurn"`
-	Tokens    tokenList `json:"tokens"`
+	Tokens    TokenList `json:"tokens"`
 	Me        *city     `json:"me"`
 	Enemy     *city     `json:"enemy"`
 
@@ -250,11 +250,11 @@ func newCity(name Nickname) *city {
 		Name:      name,
 		Resources: resourceMap{},
 		Wonders: &cwonders{
-			List:        wonderList{},
+			List:        WonderList{},
 			Constructed: map[WonderId]CardId{},
 		},
 		Tokens: &ctokens{
-			List:   tokenList{},
+			List:   TokenList{},
 			search: map[TokenId]struct{}{},
 		},
 		Symbols: &csymbols{
@@ -262,13 +262,13 @@ func newCity(name Nickname) *city {
 			Order: []symbol{},
 		},
 		Cards: &ccards{
-			Data: map[cardGroup]cardList{},
+			Data: map[cardGroup]CardList{},
 		},
 		Treasure: &ctreasure{
 			Coins: defaultTreasureCoins,
 		},
 		Chains: &cchains{
-			List:   cardList{},
+			List:   CardList{},
 			search: map[CardId]struct{}{},
 		},
 		Track: &track{},
@@ -460,7 +460,7 @@ func (dst *bank) setWonderPrice(w WonderId, coins int) {
 }
 
 type cwonders struct {
-	List        wonderList          `json:"list"`
+	List        WonderList          `json:"list"`
 	Constructed map[WonderId]CardId `json:"constructed"`
 }
 
@@ -502,7 +502,7 @@ func (dst *cwonders) construct(w WonderId, c CardId) {
 }
 
 func (dst *cwonders) removeNotConstructed() {
-	w := wonderList{}
+	w := WonderList{}
 
 	for _, wid := range dst.List {
 		if dst.Constructed[wid].isNil() {
@@ -516,7 +516,7 @@ func (dst *cwonders) removeNotConstructed() {
 }
 
 type ctokens struct {
-	List   tokenList `json:"list"`
+	List   TokenList `json:"list"`
 	search map[TokenId]struct{}
 }
 
@@ -564,7 +564,7 @@ func (dst *csymbols) add(s symbol) symbolStatus {
 
 // @TODO make custom map type
 type ccards struct {
-	Data map[cardGroup]cardList `json:"data"`
+	Data map[cardGroup]CardList `json:"data"`
 }
 
 func (dst *ccards) add(cid CardId) {
@@ -601,7 +601,7 @@ func (dst *ctreasure) add(count int) {
 }
 
 type cchains struct {
-	List   cardList `json:"list"`
+	List   CardList `json:"list"`
 	search map[CardId]struct{}
 }
 
@@ -617,15 +617,15 @@ func (dst *cchains) has(c CardId) bool {
 }
 
 type dialogItems struct {
-	Wonders wonderList `json:"wonders"`
-	Cards   cardList   `json:"cards"`
-	Tokens  tokenList  `json:"tokens"`
+	Wonders WonderList `json:"wonders"`
+	Cards   CardList   `json:"cards"`
+	Tokens  TokenList  `json:"tokens"`
 }
 
 type cardItems struct {
-	Layout    cardList `json:"layout"`
+	Layout    CardList `json:"layout"`
 	Playable  cardSet  `json:"playable"`
-	Discarded cardList `json:"discarded"`
+	Discarded CardList `json:"discarded"`
 }
 
 func (dst *cardItems) isPlayable(c CardId) bool {
@@ -653,9 +653,9 @@ func (dst *cardItems) removeDiscarded(c CardId) {
 }
 
 type randomItems struct {
-	Wonders wonderList
-	Cards   map[age]cardList
-	Tokens  tokenList
+	Wonders WonderList
+	Cards   map[age]CardList
+	Tokens  TokenList
 }
 
 type discounter struct {

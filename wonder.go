@@ -20,9 +20,9 @@ const (
 type WonderId int
 type WonderMap map[WonderId]wonder
 type wonderSearch map[WonderId]struct{}
-type wonderList []WonderId
+type WonderList []WonderId
 
-func (dst wonderList) getWonderSearch() wonderSearch {
+func (dst WonderList) getWonderSearch() wonderSearch {
 	out := make(wonderSearch, len(dst))
 
 	for _, wid := range dst {

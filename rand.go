@@ -11,8 +11,8 @@ func randBool() bool {
 	return rand.Intn(2) != 0
 }
 
-func shuffleTokens(in tokenList) tokenList {
-	out := make(tokenList, len(in))
+func shuffleTokens(in TokenList) TokenList {
+	out := make(TokenList, len(in))
 	copy(out, in)
 
 	rand.Seed(time.Now().UnixNano())
@@ -23,8 +23,8 @@ func shuffleTokens(in tokenList) tokenList {
 	return out
 }
 
-func shuffleWonders(in wonderList) wonderList {
-	out := make(wonderList, len(in))
+func shuffleWonders(in WonderList) WonderList {
+	out := make(WonderList, len(in))
 	copy(out, in)
 
 	rand.Seed(time.Now().UnixNano())
@@ -35,8 +35,8 @@ func shuffleWonders(in wonderList) wonderList {
 	return out
 }
 
-func randCards(a age) cardList {
-	var out cardList
+func randCards(a age) CardList {
+	var out CardList
 	cards := shuffleCards(R.ageCards[a])
 
 	switch a {
@@ -51,8 +51,8 @@ func randCards(a age) cardList {
 	return out
 }
 
-func shuffleCards(in cardList) cardList {
-	out := make(cardList, len(in))
+func shuffleCards(in CardList) CardList {
+	out := make(CardList, len(in))
 	copy(out, in)
 
 	rand.Seed(time.Now().UnixNano())

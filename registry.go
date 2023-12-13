@@ -1471,16 +1471,16 @@ var R = registry{
 type registry struct {
 	Wonders   WonderMap
 	Cards     CardMap
-	wonderIds wonderList
-	guilds    cardList
-	ageCards  map[age]cardList
+	wonderIds WonderList
+	guilds    CardList
+	ageCards  map[age]CardList
 	tokens    tokenMap
-	tokenIds  tokenList
+	tokenIds  TokenList
 	layouts   map[age]string
 }
 
 func init() {
-	var ids wonderList
+	var ids WonderList
 
 	for id, _ := range R.Wonders {
 		ids = append(ids, id)
@@ -1490,7 +1490,7 @@ func init() {
 }
 
 func init() {
-	var ids tokenList
+	var ids TokenList
 
 	for id, _ := range R.tokens {
 		ids = append(ids, id)
@@ -1500,9 +1500,9 @@ func init() {
 }
 
 func init() {
-	var guilds cardList
+	var guilds CardList
 
-	ageCards := map[age]cardList{
+	ageCards := map[age]CardList{
 		ageI:   {},
 		ageII:  {},
 		ageIII: {},

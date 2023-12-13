@@ -54,7 +54,7 @@ func (dst burnCardEffect) Mutate(s *State) error {
 			s.Phase = phaseBurnCard
 			s.setTurn(name)
 
-			s.DialogItems.Cards = make(cardList, len(items))
+			s.DialogItems.Cards = make(CardList, len(items))
 			copy(s.DialogItems.Cards, items)
 		}
 	}(s.Me.Name))
@@ -307,7 +307,7 @@ func (dst pickDiscardedCardEffect) Mutate(s *State) error {
 		return func(s *State) {
 			s.Phase = phasePickDiscardedCard
 			s.setTurn(name)
-			s.DialogItems.Cards = make(cardList, len(items))
+			s.DialogItems.Cards = make(CardList, len(items))
 			copy(s.DialogItems.Cards, items)
 		}
 	}(s.Me.Name))
@@ -381,7 +381,7 @@ func (dst pickBoardTokenEffect) Mutate(s *State) error {
 		return func(s *State) {
 			s.Phase = phasePickBoardToken
 			s.setTurn(name)
-			s.DialogItems.Tokens = make(tokenList, len(s.Tokens))
+			s.DialogItems.Tokens = make(TokenList, len(s.Tokens))
 			copy(s.DialogItems.Tokens, s.Tokens)
 		}
 	}(s.Me.Name))
@@ -404,7 +404,7 @@ func (dst pickRandomTokenEffect) Mutate(s *State) error {
 		return func(s *State) {
 			s.Phase = phasePickRandomToken
 			s.setTurn(name)
-			s.DialogItems.Tokens = make(tokenList, len(s.RandomItems.Tokens))
+			s.DialogItems.Tokens = make(TokenList, len(s.RandomItems.Tokens))
 			copy(s.DialogItems.Tokens, s.RandomItems.Tokens)
 		}
 	}(s.Me.Name))

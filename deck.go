@@ -4,7 +4,7 @@ import (
 	"strings"
 )
 
-func newDeck(cards cardList, layout string) *deck {
+func newDeck(cards CardList, layout string) *deck {
 	d := &deck{
 		graph:    make(graph),
 		cards:    cards,
@@ -57,7 +57,7 @@ func newDeck(cards cardList, layout string) *deck {
 
 type deck struct {
 	graph    graph
-	cards    cardList
+	cards    CardList
 	faceDown cardSet
 	layout   string
 }
@@ -67,8 +67,8 @@ type deck struct {
 // value == -1: empty slot
 // value == 0 face down card
 // value > 0 face up card id
-func (dst *deck) getLayout() cardList {
-	cards := make(cardList, len(dst.cards))
+func (dst *deck) getLayout() CardList {
+	cards := make(CardList, len(dst.cards))
 	copy(cards, dst.cards)
 
 	for i, cid := range dst.cards {
@@ -103,8 +103,8 @@ func (dst *deck) playableCards() cardSet {
 	return cards
 }
 
-func (dst *deck) topLineCards() cardList {
-	var cards cardList
+func (dst *deck) topLineCards() CardList {
+	var cards CardList
 	count := strings.Count(strings.Split(strings.Trim(dst.layout, "\n"), "\n")[0], "[")
 
 	for _, cid := range dst.getLayout()[:count] {
@@ -116,14 +116,14 @@ func (dst *deck) topLineCards() cardList {
 	return cards
 }
 
-func (dst *deck) returnedCards() cardList {
+func (dst *deck) returnedCards() CardList {
 	search := make(cardSet, len(dst.cards))
 
 	for _, cid := range dst.cards {
 		search[cid] = struct{}{}
 	}
 
-	var cards cardList
+	var cards CardList
 	age := R.Cards[dst.cards[0]].Age
 
 	for _, cid := range R.ageCards[age] {
@@ -157,6 +157,6 @@ func (dst *deck) isEmpty() bool {
 	return len(dst.graph) == 0
 }
 
-type graph map[CardId]cardList
+type graph map[CardId]CardList
 
 type line map[int]CardId

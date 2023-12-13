@@ -102,11 +102,11 @@ func (dst CardId) isNil() bool {
 }
 
 type CardMap map[CardId]card
-type cardList []CardId
+type CardList []CardId
 type cardSet map[CardId]struct{}
 
-func (dst cardSet) List() cardList {
-	out := make(cardList, len(dst))
+func (dst cardSet) List() CardList {
+	out := make(CardList, len(dst))
 
 	i := 0
 
