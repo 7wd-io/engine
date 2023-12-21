@@ -44,7 +44,7 @@ func NewMovePrepare(p1, p2 Nickname) Mutator {
 	}
 
 	return PrepareMove{
-		move:         move{MovePrepare},
+		Id:           MovePrepare,
 		P1:           p1,
 		P2:           p2,
 		Wonders:      w[:wonderSelectionPoolSize*2],
@@ -55,7 +55,7 @@ func NewMovePrepare(p1, p2 Nickname) Mutator {
 }
 
 type PrepareMove struct {
-	move
+	Id           MoveId           `json:"id"`
 	P1           Nickname         `json:"p1"`
 	P2           Nickname         `json:"p2"`
 	Wonders      WonderList       `json:"wonders"`
@@ -91,13 +91,13 @@ func (dst PrepareMove) Mutate(s *State) error {
 
 func NewMovePickWonder(w WonderId) Mutator {
 	return PickWonderMove{
-		move:   move{MovePickWonder},
+		Id:     MovePickWonder,
 		Wonder: w,
 	}
 }
 
 type PickWonderMove struct {
-	move
+	Id     MoveId   `json:"id"`
 	Wonder WonderId `json:"wonder"`
 }
 
@@ -154,13 +154,13 @@ func (dst PickWonderMove) Mutate(s *State) error {
 
 func NewMoveSelectWhoBeginsTheNextAge(n Nickname) Mutator {
 	return SelectWhoBeginsTheNextAgeMove{
-		move:   move{MoveSelectWhoBeginsTheNextAge},
+		Id:     MoveSelectWhoBeginsTheNextAge,
 		Player: n,
 	}
 }
 
 type SelectWhoBeginsTheNextAgeMove struct {
-	move
+	Id     MoveId   `json:"id"`
 	Player Nickname `json:"player"`
 }
 
@@ -178,13 +178,13 @@ func (dst SelectWhoBeginsTheNextAgeMove) Mutate(s *State) error {
 
 func NewMovePickBoardToken(t TokenId) Mutator {
 	return PickBoardTokenMove{
-		move:  move{MovePickBoardToken},
+		Id:    MovePickBoardToken,
 		Token: t,
 	}
 }
 
 type PickBoardTokenMove struct {
-	move
+	Id    MoveId  `json:"id"`
 	Token TokenId `json:"token"`
 }
 
@@ -232,13 +232,13 @@ func (dst PickBoardTokenMove) Mutate(s *State) error {
 
 func NewMovePickRandomToken(t TokenId) Mutator {
 	return PickRandomTokenMove{
-		move:  move{MovePickRandomToken},
+		Id:    MovePickRandomToken,
 		Token: t,
 	}
 }
 
 type PickRandomTokenMove struct {
-	move
+	Id    MoveId  `json:"id"`
 	Token TokenId `json:"token"`
 }
 
@@ -273,13 +273,13 @@ func (dst PickRandomTokenMove) Mutate(s *State) error {
 
 func NewMoveConstructCard(c CardId) Mutator {
 	return ConstructCardMove{
-		move: move{MoveConstructCard},
+		Id:   MoveConstructCard,
 		Card: c,
 	}
 }
 
 type ConstructCardMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Card CardId `json:"card"`
 }
 
@@ -317,14 +317,14 @@ func (dst ConstructCardMove) Mutate(s *State) error {
 
 func NewMoveConstructWonder(w WonderId, c CardId) Mutator {
 	return ConstructWonderMove{
-		move:   move{MoveConstructWonder},
+		Id:     MoveConstructWonder,
 		Wonder: w,
 		Card:   c,
 	}
 }
 
 type ConstructWonderMove struct {
-	move
+	Id     MoveId   `json:"id"`
 	Wonder WonderId `json:"wonder"`
 	Card   CardId   `json:"card"`
 }
@@ -376,13 +376,13 @@ func (dst ConstructWonderMove) Mutate(s *State) error {
 
 func NewMoveDiscardCard(c CardId) Mutator {
 	return DiscardCardMove{
-		move: move{MoveDiscardCard},
+		Id:   MoveDiscardCard,
 		Card: c,
 	}
 }
 
 type DiscardCardMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Card CardId `json:"card"`
 }
 
@@ -406,13 +406,13 @@ func (dst DiscardCardMove) Mutate(s *State) error {
 
 func NewMoveBurnCard(c CardId) Mutator {
 	return BurnCardMove{
-		move: move{MoveBurnCard},
+		Id:   MoveBurnCard,
 		Card: c,
 	}
 }
 
 type BurnCardMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Card CardId `json:"card"`
 }
 
@@ -445,13 +445,13 @@ func (dst BurnCardMove) Mutate(s *State) error {
 
 func NewMovePickTopLineCard(c CardId) Mutator {
 	return PickTopLineCardMove{
-		move: move{MovePickTopLineCard},
+		Id:   MovePickTopLineCard,
 		Card: c,
 	}
 }
 
 type PickTopLineCardMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Card CardId `json:"card"`
 }
 
@@ -488,13 +488,13 @@ func (dst PickTopLineCardMove) Mutate(s *State) error {
 
 func NewMovePickDiscardedCard(c CardId) Mutator {
 	return PickDiscardedCardMove{
-		move: move{MovePickDiscardedCard},
+		Id:   MovePickDiscardedCard,
 		Card: c,
 	}
 }
 
 type PickDiscardedCardMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Card CardId `json:"card"`
 }
 
@@ -530,14 +530,14 @@ func (dst PickDiscardedCardMove) Mutate(s *State) error {
 
 func NewMovePickReturnedCards(p CardId, g CardId) Mutator {
 	return PickReturnedCardsMove{
-		move: move{MovePickReturnedCards},
+		Id:   MovePickReturnedCards,
 		Pick: p,
 		Give: g,
 	}
 }
 
 type PickReturnedCardsMove struct {
-	move
+	Id   MoveId `json:"id"`
 	Pick CardId `json:"pick"`
 	Give CardId `json:"give"`
 }
@@ -592,14 +592,14 @@ func (dst PickReturnedCardsMove) isValidCards(s *State) bool {
 
 func NewMoveOver(loser Nickname, reason Victory) Mutator {
 	return OverMove{
-		move:   move{MoveOver},
+		Id:     MoveOver,
 		Loser:  loser,
 		Reason: reason,
 	}
 }
 
 type OverMove struct {
-	move
+	Id     MoveId   `json:"id"`
 	Loser  Nickname `json:"loser"`
 	Reason Victory  `json:"reason"`
 }

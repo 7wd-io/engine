@@ -19,9 +19,9 @@ func TestStateFrom(t *testing.T) {
 			args: args{
 				m: []Mutator{
 					PrepareMove{
-						move: move{MovePrepare},
-						P1:   "user1",
-						P2:   "user2",
+						Id: MovePrepare,
+						P1: "user1",
+						P2: "user2",
 						Wonders: WonderList{
 							TheHangingGardens,
 							TheTempleOfArtemis,
