@@ -247,7 +247,7 @@ var R = registry{
 	Cards: map[CardId]Card{
 		LumberYard: {
 			Id:    LumberYard,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			unit: unit{
 				Effects: []interface{}{
@@ -257,7 +257,7 @@ var R = registry{
 		},
 		LoggingCamp: {
 			Id:    LoggingCamp,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 1,
@@ -270,7 +270,7 @@ var R = registry{
 		},
 		ClayPool: {
 			Id:    ClayPool,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			unit: unit{
 				Effects: []interface{}{
@@ -280,7 +280,7 @@ var R = registry{
 		},
 		ClayPit: {
 			Id:    ClayPit,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 1,
@@ -293,7 +293,7 @@ var R = registry{
 		},
 		Quarry: {
 			Id:    Quarry,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			unit: unit{
 				Effects: []interface{}{
@@ -303,7 +303,7 @@ var R = registry{
 		},
 		StonePit: {
 			Id:    StonePit,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 1,
@@ -316,7 +316,7 @@ var R = registry{
 		},
 		GlassWorks: {
 			Id:    GlassWorks,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupManufacturedGoods,
 			Cost: cost{
 				Coins: 1,
@@ -329,7 +329,7 @@ var R = registry{
 		},
 		Press: {
 			Id:    Press,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupManufacturedGoods,
 			Cost: cost{
 				Coins: 1,
@@ -342,7 +342,7 @@ var R = registry{
 		},
 		GuardTower: {
 			Id:    GuardTower,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupMilitary,
 			unit: unit{
 				Effects: []interface{}{
@@ -352,7 +352,7 @@ var R = registry{
 		},
 		Workshop: {
 			Id:    Workshop,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -368,7 +368,7 @@ var R = registry{
 		},
 		Apothecary: {
 			Id:    Apothecary,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -384,7 +384,7 @@ var R = registry{
 		},
 		StoneReserve: {
 			Id:    StoneReserve,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 3,
@@ -398,7 +398,7 @@ var R = registry{
 		},
 		ClayReserve: {
 			Id:    ClayReserve,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 3,
@@ -412,7 +412,7 @@ var R = registry{
 		},
 		WoodReserve: {
 			Id:    WoodReserve,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 3,
@@ -426,7 +426,7 @@ var R = registry{
 		},
 		Stable: {
 			Id:    Stable,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -442,7 +442,7 @@ var R = registry{
 		},
 		Garrison: {
 			Id:    Garrison,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -458,7 +458,7 @@ var R = registry{
 		},
 		Palisade: {
 			Id:    Palisade,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupMilitary,
 			Cost: cost{
 				Coins: 2,
@@ -472,7 +472,7 @@ var R = registry{
 		},
 		Scriptorium: {
 			Id:    Scriptorium,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupScientific,
 			Cost: cost{
 				Coins: 2,
@@ -486,7 +486,7 @@ var R = registry{
 		},
 		Pharmacist: {
 			Id:    Pharmacist,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupScientific,
 			Cost: cost{
 				Coins: 2,
@@ -500,7 +500,7 @@ var R = registry{
 		},
 		Theater: {
 			Id:    Theater,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCivilian,
 			unit: unit{
 				Effects: []interface{}{
@@ -511,7 +511,7 @@ var R = registry{
 		},
 		Altar: {
 			Id:    Altar,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCivilian,
 			unit: unit{
 				Effects: []interface{}{
@@ -522,7 +522,7 @@ var R = registry{
 		},
 		Baths: {
 			Id:    Baths,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -538,7 +538,7 @@ var R = registry{
 		},
 		Tavern: {
 			Id:    Tavern,
-			Age:   ageI,
+			Age:   AgeI,
 			Group: groupCommercial,
 			unit: unit{
 				Effects: []interface{}{
@@ -550,7 +550,7 @@ var R = registry{
 		},
 		SawMill: {
 			Id:    SawMill,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 2,
@@ -563,7 +563,7 @@ var R = registry{
 		},
 		BrickYard: {
 			Id:    BrickYard,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 2,
@@ -576,7 +576,7 @@ var R = registry{
 		},
 		ShelfQuarry: {
 			Id:    ShelfQuarry,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupRawMaterials,
 			Cost: cost{
 				Coins: 2,
@@ -589,7 +589,7 @@ var R = registry{
 		},
 		GlassBlower: {
 			Id:    GlassBlower,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupManufacturedGoods,
 			unit: unit{
 				Effects: []interface{}{
@@ -599,7 +599,7 @@ var R = registry{
 		},
 		DryingRoom: {
 			Id:    DryingRoom,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupManufacturedGoods,
 			unit: unit{
 				Effects: []interface{}{
@@ -609,7 +609,7 @@ var R = registry{
 		},
 		Walls: {
 			Id:    Walls,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -624,7 +624,7 @@ var R = registry{
 		},
 		Forum: {
 			Id:    Forum,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 3,
@@ -641,7 +641,7 @@ var R = registry{
 		},
 		Caravansery: {
 			Id:    Caravansery,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 2,
@@ -659,7 +659,7 @@ var R = registry{
 		},
 		CustomHouse: {
 			Id:    CustomHouse,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCommercial,
 			Cost: cost{
 				Coins: 4,
@@ -673,7 +673,7 @@ var R = registry{
 		},
 		CourtHouse: {
 			Id:    CourtHouse,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -689,7 +689,7 @@ var R = registry{
 		},
 		HorseBreeders: {
 			Id:    HorseBreeders,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -705,7 +705,7 @@ var R = registry{
 		},
 		Barracks: {
 			Id:    Barracks,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupMilitary,
 			Cost: cost{
 				Coins: 3,
@@ -718,7 +718,7 @@ var R = registry{
 		},
 		ArcheryRange: {
 			Id:    ArcheryRange,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -736,7 +736,7 @@ var R = registry{
 		},
 		ParadeGround: {
 			Id:    ParadeGround,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -753,7 +753,7 @@ var R = registry{
 		},
 		Library: {
 			Id:    Library,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -771,7 +771,7 @@ var R = registry{
 		},
 		Dispensary: {
 			Id:    Dispensary,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -788,7 +788,7 @@ var R = registry{
 		},
 		School: {
 			Id:    School,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -806,7 +806,7 @@ var R = registry{
 		},
 		Laboratory: {
 			Id:    Laboratory,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -824,7 +824,7 @@ var R = registry{
 		},
 		Statue: {
 			Id:    Statue,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -840,7 +840,7 @@ var R = registry{
 		},
 		Temple: {
 			Id:    Temple,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -857,7 +857,7 @@ var R = registry{
 		},
 		Aqueduct: {
 			Id:    Aqueduct,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -872,7 +872,7 @@ var R = registry{
 		},
 		Rostrum: {
 			Id:    Rostrum,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -889,7 +889,7 @@ var R = registry{
 		},
 		Brewery: {
 			Id:    Brewery,
-			Age:   ageII,
+			Age:   AgeII,
 			Group: groupCommercial,
 			unit: unit{
 				Effects: []interface{}{
@@ -901,7 +901,7 @@ var R = registry{
 		},
 		Arsenal: {
 			Id:    Arsenal,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -917,7 +917,7 @@ var R = registry{
 		},
 		Pretorium: {
 			Id:    Pretorium,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupMilitary,
 			Cost: cost{
 				Coins: 8,
@@ -930,7 +930,7 @@ var R = registry{
 		},
 		Academy: {
 			Id:    Academy,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -948,7 +948,7 @@ var R = registry{
 		},
 		Study: {
 			Id:    Study,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -966,7 +966,7 @@ var R = registry{
 		},
 		ChamberOfCommerce: {
 			Id:    ChamberOfCommerce,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCommercial,
 			Cost: cost{
 				Resources: resourceMap{
@@ -983,7 +983,7 @@ var R = registry{
 		},
 		Port: {
 			Id:    Port,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCommercial,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1002,7 +1002,7 @@ var R = registry{
 		},
 		Armory: {
 			Id:    Armory,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCommercial,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1020,7 +1020,7 @@ var R = registry{
 		},
 		Palace: {
 			Id:    Palace,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1038,7 +1038,7 @@ var R = registry{
 		},
 		TownHall: {
 			Id:    TownHall,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1054,7 +1054,7 @@ var R = registry{
 		},
 		Obelisk: {
 			Id:    Obelisk,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1070,7 +1070,7 @@ var R = registry{
 		},
 		Fortifications: {
 			Id:    Fortifications,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1087,7 +1087,7 @@ var R = registry{
 		},
 		SiegeWorkshop: {
 			Id:    SiegeWorkshop,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1103,7 +1103,7 @@ var R = registry{
 		},
 		Circus: {
 			Id:    Circus,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupMilitary,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1119,7 +1119,7 @@ var R = registry{
 		},
 		University: {
 			Id:    University,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1137,7 +1137,7 @@ var R = registry{
 		},
 		Observatory: {
 			Id:    Observatory,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupScientific,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1154,7 +1154,7 @@ var R = registry{
 		},
 		Gardens: {
 			Id:    Gardens,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1170,7 +1170,7 @@ var R = registry{
 		},
 		Pantheon: {
 			Id:    Pantheon,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1187,7 +1187,7 @@ var R = registry{
 		},
 		Senate: {
 			Id:    Senate,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCivilian,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1204,7 +1204,7 @@ var R = registry{
 		},
 		Lighthouse: {
 			Id:    Lighthouse,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCommercial,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1222,7 +1222,7 @@ var R = registry{
 		},
 		Arena: {
 			Id:    Arena,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupCommercial,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1241,7 +1241,7 @@ var R = registry{
 		},
 		MerchantsGuild: {
 			Id:    MerchantsGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1259,7 +1259,7 @@ var R = registry{
 		},
 		ShipOwnersGuild: {
 			Id:    ShipOwnersGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1277,7 +1277,7 @@ var R = registry{
 		},
 		BuildersGuild: {
 			Id:    BuildersGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1295,7 +1295,7 @@ var R = registry{
 		},
 		MagistratesGuild: {
 			Id:    MagistratesGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1312,7 +1312,7 @@ var R = registry{
 		},
 		ScientistsGuild: {
 			Id:    ScientistsGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1328,7 +1328,7 @@ var R = registry{
 		},
 		MoneyLendersGuild: {
 			Id:    MoneyLendersGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1344,7 +1344,7 @@ var R = registry{
 		},
 		TacticiansGuild: {
 			Id:    TacticiansGuild,
-			Age:   ageIII,
+			Age:   AgeIII,
 			Group: groupGuild,
 			Cost: cost{
 				Resources: resourceMap{
@@ -1440,22 +1440,22 @@ var R = registry{
 			},
 		},
 	},
-	layouts: map[age]string{
-		ageI: `
+	layouts: map[Age]string{
+		AgeI: `
     [][]
    [][][]
   [][][][]
  [][][][][]
 [][][][][][]
 `,
-		ageII: `
+		AgeII: `
 [][][][][][]
  [][][][][]
   [][][][]
    [][][]
     [][]
 `,
-		ageIII: `
+		AgeIII: `
   [][]
  [][][]
 [][][][]
@@ -1472,10 +1472,10 @@ type registry struct {
 	Cards     CardMap
 	wonderIds WonderList
 	guilds    CardList
-	ageCards  map[age]CardList
+	ageCards  map[Age]CardList
 	tokens    TokenMap
 	tokenIds  TokenList
-	layouts   map[age]string
+	layouts   map[Age]string
 }
 
 func init() {
@@ -1501,10 +1501,10 @@ func init() {
 func init() {
 	var guilds CardList
 
-	ageCards := map[age]CardList{
-		ageI:   {},
-		ageII:  {},
-		ageIII: {},
+	ageCards := map[Age]CardList{
+		AgeI:   {},
+		AgeII:  {},
+		AgeIII: {},
 	}
 
 	for _, c := range R.Cards {

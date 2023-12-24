@@ -17,7 +17,7 @@ func StateFrom(m ...Mutator) (*State, error) {
 }
 
 type State struct {
-	Age       age       `json:"age"`
+	Age       Age       `json:"age"`
 	Phase     phase     `json:"phase"`
 	FirstTurn Nickname  `json:"firstTurn"`
 	Tokens    TokenList `json:"tokens"`
@@ -140,7 +140,7 @@ func (dst *State) after() {
 
 	hasDialogs := len(dst.Dialogs) > 0
 
-	isOver = dst.Deck.isEmpty() && dst.Age == ageIII && dst.Phase == PhaseTurn && !hasDialogs
+	isOver = dst.Deck.isEmpty() && dst.Age == AgeIII && dst.Phase == PhaseTurn && !hasDialogs
 
 	if isOver {
 		dst.over(Civilian, "")
@@ -177,7 +177,7 @@ func (dst *State) after() {
 		dst.FallbackTurn = ""
 	}
 
-	isOver = dst.Deck.isEmpty() && dst.Age == ageIII && dst.Phase == PhaseTurn
+	isOver = dst.Deck.isEmpty() && dst.Age == AgeIII && dst.Phase == PhaseTurn
 
 	if isOver {
 		dst.over(Civilian, "")
@@ -189,7 +189,7 @@ func (dst *State) IsOver() bool {
 }
 
 func (dst *State) resolveTurn() {
-	if dst.Deck.isEmpty() && dst.Age != ageIII {
+	if dst.Deck.isEmpty() && dst.Age != AgeIII {
 		dst.Phase = phaseSelectWhoBeginsTheNextAge
 		// if last card construct wonder with play again effect
 		// we should drop
@@ -218,7 +218,7 @@ func (dst *State) resolveTurn() {
 }
 
 func (dst *State) nextAgeIfNeeded() {
-	if dst.Deck.isEmpty() && dst.Age != ageIII {
+	if dst.Deck.isEmpty() && dst.Age != AgeIII {
 		dst.Age++
 		dst.Deck = newDeck(dst.RandomItems.Cards[dst.Age], R.layouts[dst.Age])
 	}
@@ -654,7 +654,7 @@ func (dst *cardItems) removeDiscarded(c CardId) {
 
 type randomItems struct {
 	Wonders WonderList
-	Cards   map[age]CardList
+	Cards   map[Age]CardList
 	Tokens  TokenList
 }
 

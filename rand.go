@@ -35,12 +35,12 @@ func shuffleWonders(in WonderList) WonderList {
 	return out
 }
 
-func randCards(a age) CardList {
+func randCards(a Age) CardList {
 	var out CardList
 	cards := shuffleCards(R.ageCards[a])
 
 	switch a {
-	case ageIII:
+	case AgeIII:
 		out = cards[:deckLimit-guildsLimit]
 		out = append(out, shuffleCards(R.guilds)[:guildsLimit]...)
 		out = shuffleCards(out)

@@ -44,8 +44,8 @@ func TestStateFrom(t *testing.T) {
 							Strategy,
 							Masonry,
 						},
-						Cards: map[age]CardList{
-							ageI: {
+						Cards: map[Age]CardList{
+							AgeI: {
 								Palisade,
 								Theater,
 								Tavern,
@@ -67,7 +67,7 @@ func TestStateFrom(t *testing.T) {
 								Pharmacist,
 								StoneReserve,
 							},
-							ageII: {
+							AgeII: {
 								Dispensary,
 								CustomHouse,
 								CourtHouse,
@@ -89,7 +89,7 @@ func TestStateFrom(t *testing.T) {
 								Barracks,
 								DryingRoom,
 							},
-							ageIII: {
+							AgeIII: {
 								Port,
 								Academy,
 								Obelisk,

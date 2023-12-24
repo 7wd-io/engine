@@ -1,9 +1,9 @@
 package engine
 
 const (
-	ageI age = iota + 1
-	ageII
-	ageIII
+	AgeI Age = iota + 1
+	AgeII
+	AgeIII
 )
 
-type age int
+type Age int

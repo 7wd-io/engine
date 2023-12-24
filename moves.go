@@ -37,9 +37,9 @@ func NewMovePrepare(p1, p2 Nickname) Mutator {
 
 	w := shuffleWonders(R.wonderIds)
 
-	c := map[age]CardList{}
+	c := map[Age]CardList{}
 
-	for _, a := range []age{ageI, ageII, ageIII} {
+	for _, a := range []Age{AgeI, AgeII, AgeIII} {
 		c[a] = randCards(a)
 	}
 
@@ -61,7 +61,7 @@ type PrepareMove struct {
 	Wonders      WonderList       `json:"wonders"`
 	Tokens       TokenList        `json:"tokens"`
 	RandomTokens TokenList        `json:"randomTokens"`
-	Cards        map[age]CardList `json:"cards"`
+	Cards        map[Age]CardList `json:"cards"`
 }
 
 func (dst PrepareMove) Mutate(s *State) error {
@@ -69,7 +69,7 @@ func (dst PrepareMove) Mutate(s *State) error {
 		return ErrActionNotAllowed
 	}
 
-	s.Age = ageI
+	s.Age = AgeI
 	s.Phase = phasePrepare
 	s.FirstTurn = dst.P1
 
@@ -144,7 +144,7 @@ func (dst PickWonderMove) Mutate(s *State) error {
 		s.Phase = PhaseTurn
 		s.DialogItems.Wonders = nil
 
-		s.Deck = newDeck(s.RandomItems.Cards[ageI], R.layouts[ageI])
+		s.Deck = newDeck(s.RandomItems.Cards[AgeI], R.layouts[AgeI])
 		s.refreshDeckCards()
 		s.refreshCities()
 	}

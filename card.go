@@ -122,7 +122,7 @@ type cardGroup int
 
 type Card struct {
 	Id    CardId    `json:"id"`
-	Age   age       `json:"age"`
+	Age   Age       `json:"age"`
 	Group cardGroup `json:"group"`
 	Cost  cost      `json:"cost,omitempty"`
 	unit
