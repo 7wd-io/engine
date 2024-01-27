@@ -1,0 +1,210 @@
+package engine
+
+import (
+	"testing"
+)
+
+func TestStateFrom(t *testing.T) {
+	type args struct {
+		m []Mutator
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    *State
+		wantErr bool
+	}{
+		{
+			name: "game 11",
+			args: args{
+				m: []Mutator{
+					PrepareMove{
+						Id: MovePrepare,
+						P1: "user1",
+						P2: "user2",
+						Wonders: WonderList{
+							TheHangingGardens,
+							TheTempleOfArtemis,
+							TheColossus,
+							Messe,
+							ThePyramids,
+							StatueOfLiberty,
+							TheMausoleum,
+							TheSphinx,
+						},
+						Tokens: TokenList{
+							Economy,
+							Agriculture,
+							Philosophy,
+							Theology,
+							Law,
+						},
+						RandomTokens: TokenList{
+							Urbanism,
+							Strategy,
+							Masonry,
+						},
+						Cards: map[Age]CardList{
+							AgeI: {
+								Palisade,
+								Theater,
+								Tavern,
+								Stable,
+								Altar,
+								Workshop,
+								ClayReserve,
+								GlassWorks,
+								LoggingCamp,
+								LumberYard,
+								Baths,
+								Quarry,
+								ClayPit,
+								ClayPool,
+								Scriptorium,
+								Garrison,
+								StonePit,
+								WoodReserve,
+								Pharmacist,
+								StoneReserve,
+							},
+							AgeII: {
+								Dispensary,
+								CustomHouse,
+								CourtHouse,
+								Caravansery,
+								GlassBlower,
+								BrickYard,
+								School,
+								Laboratory,
+								Aqueduct,
+								ArcheryRange,
+								ParadeGround,
+								Brewery,
+								Statue,
+								HorseBreeders,
+								ShelfQuarry,
+								Library,
+								Walls,
+								SawMill,
+								Barracks,
+								DryingRoom,
+							},
+							AgeIII: {
+								Port,
+								Academy,
+								Obelisk,
+								Observatory,
+								Fortifications,
+								Palace,
+								Senate,
+								Armory,
+								MagistratesGuild,
+								MerchantsGuild,
+								SiegeWorkshop,
+								ChamberOfCommerce,
+								Arsenal,
+								Pretorium,
+								Arena,
+								Lighthouse,
+								Gardens,
+								Pantheon,
+								MoneyLendersGuild,
+								TownHall,
+							},
+						},
+					},
+					NewMovePickWonder(TheTempleOfArtemis),
+					NewMovePickWonder(TheHangingGardens),
+					NewMovePickWonder(TheColossus),
+					NewMovePickWonder(Messe),
+					NewMovePickWonder(TheSphinx),
+					NewMovePickWonder(StatueOfLiberty),
+					NewMovePickWonder(TheMausoleum),
+					NewMovePickWonder(ThePyramids),
+					NewMoveConstructCard(WoodReserve),
+					NewMoveConstructCard(StoneReserve),
+					NewMoveConstructCard(Scriptorium),
+					NewMoveConstructCard(StonePit),
+					NewMoveConstructCard(Quarry),
+					NewMoveDiscardCard(Garrison),
+					NewMoveConstructCard(Pharmacist),
+					NewMoveConstructCard(ClayPool),
+					NewMoveConstructCard(LumberYard),
+					NewMoveConstructCard(Baths),
+					NewMoveDiscardCard(ClayPit),
+					NewMoveConstructCard(LoggingCamp),
+					NewMoveConstructCard(GlassWorks),
+					NewMoveConstructCard(Altar),
+					NewMoveConstructCard(Workshop),
+					NewMoveDiscardCard(ClayReserve),
+					NewMoveConstructCard(Tavern),
+					NewMoveConstructCard(Stable),
+					NewMoveConstructCard(Theater),
+					NewMoveConstructCard(Palisade),
+					NewMoveSelectWhoBeginsTheNextAge("user1"),
+					NewMoveConstructCard(DryingRoom),
+					NewMoveConstructCard(SawMill),
+					NewMoveConstructCard(ShelfQuarry),
+					NewMoveDiscardCard(ParadeGround),
+					NewMoveConstructCard(BrickYard),
+					NewMoveConstructCard(Barracks),
+					NewMoveConstructCard(Library),
+					NewMovePickBoardToken(Theology),
+					NewMoveConstructCard(Walls),
+					NewMoveConstructCard(Brewery),
+					NewMoveDiscardCard(HorseBreeders),
+					NewMoveConstructWonder(Messe, Statue),
+					NewMovePickTopLineCard(Dispensary),
+					NewMovePickBoardToken(Economy),
+					NewMoveConstructCard(Laboratory),
+					NewMovePickBoardToken(Agriculture),
+					NewMoveConstructCard(ArcheryRange),
+					NewMoveConstructCard(Aqueduct),
+					NewMoveConstructCard(GlassBlower),
+					NewMoveConstructCard(School),
+					NewMoveDiscardCard(CourtHouse),
+					NewMoveConstructCard(Caravansery),
+					NewMoveConstructCard(CustomHouse),
+					NewMoveSelectWhoBeginsTheNextAge("user1"),
+					NewMoveConstructWonder(TheMausoleum, MoneyLendersGuild),
+					NewMovePickDiscardedCard(ParadeGround),
+					NewMoveConstructCard(Lighthouse),
+					NewMoveConstructCard(ChamberOfCommerce),
+					NewMoveConstructCard(TownHall),
+					NewMoveConstructWonder(ThePyramids, Gardens),
+					NewMoveConstructCard(Arsenal),
+					NewMoveDiscardCard(Pantheon),
+					NewMoveDiscardCard(Pretorium),
+					NewMoveConstructCard(MerchantsGuild),
+					NewMoveConstructWonder(StatueOfLiberty, Senate),
+					NewMovePickReturnedCards(Study, Circus),
+					NewMoveConstructWonder(TheTempleOfArtemis, Palace),
+					NewMoveConstructCard(Obelisk),
+					NewMoveConstructCard(Arena),
+					NewMoveConstructCard(SiegeWorkshop),
+					NewMoveConstructCard(MagistratesGuild),
+					NewMoveConstructCard(Armory),
+					NewMoveConstructCard(Observatory),
+					NewMoveConstructCard(Fortifications),
+					NewMoveConstructCard(Port),
+					NewMoveConstructCard(Academy),
+					NewMovePickBoardToken(Philosophy),
+				},
+			},
+			want:    nil,
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := StateFrom(tt.args.m...)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("StateFrom() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			//if !reflect.DeepEqual(got, tt.want) {
+			//	t.Errorf("StateFrom() got = %v, want %v", got, tt.want)
+			//}
+		})
+	}
+}
