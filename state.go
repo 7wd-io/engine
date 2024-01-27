@@ -287,7 +287,7 @@ func newCity(name Nickname) *city {
 
 type city struct {
 	Name       Nickname    `json:"name"`
-	Score      score       `json:"score"`
+	Score      Score       `json:"score"`
 	Resources  resourceMap `json:"resources"`
 	Wonders    *cwonders   `json:"wonders"`
 	Tokens     *ctokens    `json:"tokens"`
@@ -333,7 +333,7 @@ func (dst *city) refreshWondersPrice() {
 }
 
 func (dst *city) refreshScore(s *State) {
-	scr := score{}
+	scr := Score{}
 
 	for group, cids := range dst.Cards.Data {
 		for _, cid := range cids {
@@ -703,7 +703,7 @@ func (dst *discounter) getPriority(priceList map[resource]int) resourceList {
 	return sorted
 }
 
-type score struct {
+type Score struct {
 	Civilian   int `json:"civilian"`
 	Science    int `json:"science"`
 	Commercial int `json:"commercial"`
