@@ -98,7 +98,7 @@ func (dst coinsEffect) Mutate(s *State) error {
 	return nil
 }
 
-func newEffectCoinsFor(b bonus, count int) coinsForEffect {
+func newEffectCoinsFor(b Bonus, count int) coinsForEffect {
 	return coinsForEffect{
 		effect: effect{effectCoinsFor},
 		Bonus:  b,
@@ -108,7 +108,7 @@ func newEffectCoinsFor(b bonus, count int) coinsForEffect {
 
 type coinsForEffect struct {
 	effect
-	Bonus bonus `json:"bonus"`
+	Bonus Bonus `json:"bonus"`
 	Count int   `json:"count"`
 }
 
@@ -188,7 +188,7 @@ func (dst fixedCostEffect) Mutate(s *State) error {
 	return nil
 }
 
-func newEffectGuild(b bonus, points int, coins int) guildEffect {
+func newEffectGuild(b Bonus, points int, coins int) guildEffect {
 	return guildEffect{
 		effect: effect{effectGuild},
 		Bonus:  b,
@@ -199,7 +199,7 @@ func newEffectGuild(b bonus, points int, coins int) guildEffect {
 
 type guildEffect struct {
 	effect
-	Bonus  bonus `json:"bonus"`
+	Bonus  Bonus `json:"bonus"`
 	Points int   `json:"points"`
 	Coins  int   `json:"coins"`
 }

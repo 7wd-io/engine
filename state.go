@@ -391,23 +391,23 @@ func (dst *city) finalPrice(ctx discountContext, c cost) int {
 	return price + copyCost.Coins
 }
 
-func (dst *city) bonusRate(b bonus) int {
+func (dst *city) bonusRate(b Bonus) int {
 	switch b {
-	case bonusResources:
-		return dst.bonusRate(bonusRawMaterials) + dst.bonusRate(bonusManufacturedGoods)
-	case bonusRawMaterials:
+	case BonusResources:
+		return dst.bonusRate(BonusRawMaterials) + dst.bonusRate(BonusManufacturedGoods)
+	case BonusRawMaterials:
 		return len(dst.Cards.Data[groupRawMaterials])
-	case bonusManufacturedGoods:
+	case BonusManufacturedGoods:
 		return len(dst.Cards.Data[groupManufacturedGoods])
-	case bonusMilitary:
+	case BonusMilitary:
 		return len(dst.Cards.Data[groupMilitary])
-	case bonusCommercial:
+	case BonusCommercial:
 		return len(dst.Cards.Data[groupCommercial])
-	case bonusCivilian:
+	case BonusCivilian:
 		return len(dst.Cards.Data[groupCivilian])
-	case bonusScience:
+	case BonusScience:
 		return len(dst.Cards.Data[groupScientific])
-	case bonusWonder:
+	case BonusWonder:
 		var rate int
 
 		for _, c := range dst.Wonders.Constructed {
@@ -417,7 +417,7 @@ func (dst *city) bonusRate(b bonus) int {
 		}
 
 		return rate
-	case bonusCoin:
+	case BonusCoin:
 		return dst.Treasure.Coins / coinsPerPoint
 	default:
 		panic("unsupported bonus")

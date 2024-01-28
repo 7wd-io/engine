@@ -1,15 +1,15 @@
 package engine
 
 const (
-	bonusResources bonus = iota + 1
-	bonusRawMaterials
-	bonusManufacturedGoods
-	bonusMilitary
-	bonusCommercial
-	bonusCivilian
-	bonusScience
-	bonusWonder
-	bonusCoin
+	BonusResources Bonus = iota + 1
+	BonusRawMaterials
+	BonusManufacturedGoods
+	BonusMilitary
+	BonusCommercial
+	BonusCivilian
+	BonusScience
+	BonusWonder
+	BonusCoin
 )
 
-type bonus int
+type Bonus int

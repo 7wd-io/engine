@@ -976,7 +976,7 @@ var R = registry{
 			unit: unit{
 				Effects: []interface{}{
 					newEffectPoints(3),
-					newEffectCoinsFor(bonusManufacturedGoods, 3),
+					newEffectCoinsFor(BonusManufacturedGoods, 3),
 					newEffectDiscardRewardAdjuster(),
 				},
 			},
@@ -995,7 +995,7 @@ var R = registry{
 			unit: unit{
 				Effects: []interface{}{
 					newEffectPoints(3),
-					newEffectCoinsFor(bonusRawMaterials, 2),
+					newEffectCoinsFor(BonusRawMaterials, 2),
 					newEffectDiscardRewardAdjuster(),
 				},
 			},
@@ -1013,7 +1013,7 @@ var R = registry{
 			unit: unit{
 				Effects: []interface{}{
 					newEffectPoints(3),
-					newEffectCoinsFor(bonusMilitary, 1),
+					newEffectCoinsFor(BonusMilitary, 1),
 					newEffectDiscardRewardAdjuster(),
 				},
 			},
@@ -1215,7 +1215,7 @@ var R = registry{
 			unit: unit{
 				Effects: []interface{}{
 					newEffectPoints(3),
-					newEffectCoinsFor(bonusCommercial, 1),
+					newEffectCoinsFor(BonusCommercial, 1),
 					newEffectDiscardRewardAdjuster(),
 				},
 			},
@@ -1234,7 +1234,7 @@ var R = registry{
 			unit: unit{
 				Effects: []interface{}{
 					newEffectPoints(3),
-					newEffectCoinsFor(bonusWonder, 2),
+					newEffectCoinsFor(BonusWonder, 2),
 					newEffectDiscardRewardAdjuster(),
 				},
 			},
@@ -1253,7 +1253,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusCommercial, 1, 1),
+					newEffectGuild(BonusCommercial, 1, 1),
 				},
 			},
 		},
@@ -1271,7 +1271,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusResources, 1, 1),
+					newEffectGuild(BonusResources, 1, 1),
 				},
 			},
 		},
@@ -1289,7 +1289,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusWonder, 2, 0),
+					newEffectGuild(BonusWonder, 2, 0),
 				},
 			},
 		},
@@ -1306,7 +1306,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusCivilian, 1, 1),
+					newEffectGuild(BonusCivilian, 1, 1),
 				},
 			},
 		},
@@ -1322,7 +1322,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusScience, 1, 1),
+					newEffectGuild(BonusScience, 1, 1),
 				},
 			},
 		},
@@ -1338,7 +1338,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusCoin, 1, 0),
+					newEffectGuild(BonusCoin, 1, 0),
 				},
 			},
 		},
@@ -1355,7 +1355,7 @@ var R = registry{
 			},
 			unit: unit{
 				Effects: []interface{}{
-					newEffectGuild(bonusMilitary, 1, 1),
+					newEffectGuild(BonusMilitary, 1, 1),
 				},
 			},
 		},
