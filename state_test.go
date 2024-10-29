@@ -113,82 +113,82 @@ func TestStateFrom(t *testing.T) {
 							},
 						},
 					},
-					NewMovePickWonder(TheTempleOfArtemis),
-					NewMovePickWonder(TheHangingGardens),
-					NewMovePickWonder(TheColossus),
-					NewMovePickWonder(Messe),
-					NewMovePickWonder(TheSphinx),
-					NewMovePickWonder(StatueOfLiberty),
-					NewMovePickWonder(TheMausoleum),
-					NewMovePickWonder(ThePyramids),
-					NewMoveConstructCard(WoodReserve),
-					NewMoveConstructCard(StoneReserve),
-					NewMoveConstructCard(Scriptorium),
-					NewMoveConstructCard(StonePit),
-					NewMoveConstructCard(Quarry),
-					NewMoveDiscardCard(Garrison),
-					NewMoveConstructCard(Pharmacist),
-					NewMoveConstructCard(ClayPool),
-					NewMoveConstructCard(LumberYard),
-					NewMoveConstructCard(Baths),
-					NewMoveDiscardCard(ClayPit),
-					NewMoveConstructCard(LoggingCamp),
-					NewMoveConstructCard(GlassWorks),
-					NewMoveConstructCard(Altar),
-					NewMoveConstructCard(Workshop),
-					NewMoveDiscardCard(ClayReserve),
-					NewMoveConstructCard(Tavern),
-					NewMoveConstructCard(Stable),
-					NewMoveConstructCard(Theater),
-					NewMoveConstructCard(Palisade),
-					NewMoveSelectWhoBeginsTheNextAge("user1"),
-					NewMoveConstructCard(DryingRoom),
-					NewMoveConstructCard(SawMill),
-					NewMoveConstructCard(ShelfQuarry),
-					NewMoveDiscardCard(ParadeGround),
-					NewMoveConstructCard(BrickYard),
-					NewMoveConstructCard(Barracks),
-					NewMoveConstructCard(Library),
-					NewMovePickBoardToken(Theology),
-					NewMoveConstructCard(Walls),
-					NewMoveConstructCard(Brewery),
-					NewMoveDiscardCard(HorseBreeders),
-					NewMoveConstructWonder(Messe, Statue),
-					NewMovePickTopLineCard(Dispensary),
-					NewMovePickBoardToken(Economy),
-					NewMoveConstructCard(Laboratory),
-					NewMovePickBoardToken(Agriculture),
-					NewMoveConstructCard(ArcheryRange),
-					NewMoveConstructCard(Aqueduct),
-					NewMoveConstructCard(GlassBlower),
-					NewMoveConstructCard(School),
-					NewMoveDiscardCard(CourtHouse),
-					NewMoveConstructCard(Caravansery),
-					NewMoveConstructCard(CustomHouse),
-					NewMoveSelectWhoBeginsTheNextAge("user1"),
-					NewMoveConstructWonder(TheMausoleum, MoneyLendersGuild),
-					NewMovePickDiscardedCard(ParadeGround),
-					NewMoveConstructCard(Lighthouse),
-					NewMoveConstructCard(ChamberOfCommerce),
-					NewMoveConstructCard(TownHall),
-					NewMoveConstructWonder(ThePyramids, Gardens),
-					NewMoveConstructCard(Arsenal),
-					NewMoveDiscardCard(Pantheon),
-					NewMoveDiscardCard(Pretorium),
-					NewMoveConstructCard(MerchantsGuild),
-					NewMoveConstructWonder(StatueOfLiberty, Senate),
-					NewMovePickReturnedCards(Study, Circus),
-					NewMoveConstructWonder(TheTempleOfArtemis, Palace),
-					NewMoveConstructCard(Obelisk),
-					NewMoveConstructCard(Arena),
-					NewMoveConstructCard(SiegeWorkshop),
-					NewMoveConstructCard(MagistratesGuild),
-					NewMoveConstructCard(Armory),
-					NewMoveConstructCard(Observatory),
-					NewMoveConstructCard(Fortifications),
-					NewMoveConstructCard(Port),
-					NewMoveConstructCard(Academy),
-					NewMovePickBoardToken(Philosophy),
+					NewMovePickWonder(TheTempleOfArtemis),                   //1
+					NewMovePickWonder(TheHangingGardens),                    //2
+					NewMovePickWonder(TheColossus),                          //3
+					NewMovePickWonder(Messe),                                //4
+					NewMovePickWonder(TheSphinx),                            //5
+					NewMovePickWonder(StatueOfLiberty),                      //6
+					NewMovePickWonder(TheMausoleum),                         //7
+					NewMovePickWonder(ThePyramids),                          //8
+					NewMoveConstructCard(WoodReserve),                       //9
+					NewMoveConstructCard(StoneReserve),                      //10
+					NewMoveConstructCard(Scriptorium),                       //11
+					NewMoveConstructCard(StonePit),                          //12
+					NewMoveConstructCard(Quarry),                            //13
+					NewMoveDiscardCard(Garrison),                            //14
+					NewMoveConstructCard(Pharmacist),                        //15
+					NewMoveConstructCard(ClayPool),                          //16
+					NewMoveConstructCard(LumberYard),                        //17
+					NewMoveConstructCard(Baths),                             //18
+					NewMoveDiscardCard(ClayPit),                             //19
+					NewMoveConstructCard(LoggingCamp),                       //20
+					NewMoveConstructCard(GlassWorks),                        //21
+					NewMoveConstructCard(Altar),                             //22
+					NewMoveConstructCard(Workshop),                          //23
+					NewMoveDiscardCard(ClayReserve),                         //24
+					NewMoveConstructCard(Tavern),                            //25
+					NewMoveConstructCard(Stable),                            //26
+					NewMoveConstructCard(Theater),                           //27
+					NewMoveConstructCard(Palisade),                          //28
+					NewMoveSelectWhoBeginsTheNextAge("user1"),               //29
+					NewMoveConstructCard(DryingRoom),                        //30
+					NewMoveConstructCard(SawMill),                           //31
+					NewMoveConstructCard(ShelfQuarry),                       //32
+					NewMoveDiscardCard(ParadeGround),                        //33
+					NewMoveConstructCard(BrickYard),                         //34
+					NewMoveConstructCard(Barracks),                          //35
+					NewMoveConstructCard(Library),                           //36
+					NewMovePickBoardToken(Theology),                         //37
+					NewMoveConstructCard(Walls),                             //38
+					NewMoveConstructCard(Brewery),                           //39
+					NewMoveDiscardCard(HorseBreeders),                       //40
+					NewMoveConstructWonder(Messe, Statue),                   //41
+					NewMovePickTopLineCard(Dispensary),                      //42
+					NewMovePickBoardToken(Economy),                          //43
+					NewMoveConstructCard(Laboratory),                        //44
+					NewMovePickBoardToken(Agriculture),                      //45
+					NewMoveConstructCard(ArcheryRange),                      //46
+					NewMoveConstructCard(Aqueduct),                          //47
+					NewMoveConstructCard(GlassBlower),                       //48
+					NewMoveConstructCard(School),                            //49
+					NewMoveDiscardCard(CourtHouse),                          //50
+					NewMoveConstructCard(Caravansery),                       //51
+					NewMoveConstructCard(CustomHouse),                       //52
+					NewMoveSelectWhoBeginsTheNextAge("user1"),               //53
+					NewMoveConstructWonder(TheMausoleum, MoneyLendersGuild), //54
+					NewMovePickDiscardedCard(ParadeGround),                  //55
+					NewMoveConstructCard(Lighthouse),                        //56
+					NewMoveConstructCard(ChamberOfCommerce),                 //57
+					NewMoveConstructCard(TownHall),                          //58
+					NewMoveConstructWonder(ThePyramids, Gardens),            //59
+					NewMoveConstructCard(Arsenal),                           //60
+					NewMoveDiscardCard(Pantheon),                            //61
+					NewMoveDiscardCard(Pretorium),                           //62
+					NewMoveConstructCard(MerchantsGuild),                    //63
+					NewMoveConstructWonder(StatueOfLiberty, Senate),         //64
+					NewMovePickReturnedCards(Study, Circus),                 //65
+					NewMoveConstructWonder(TheTempleOfArtemis, Palace),      //66
+					NewMoveConstructCard(Obelisk),                           //67
+					NewMoveConstructCard(Arena),                             //68
+					NewMoveConstructCard(SiegeWorkshop),                     //69
+					NewMoveConstructCard(MagistratesGuild),                  //70
+					NewMoveConstructCard(Armory),                            //71
+					NewMoveConstructCard(Observatory),                       //72
+					NewMoveConstructCard(Fortifications),                    //73
+					NewMoveConstructCard(Port),                              //74
+					NewMoveConstructCard(Academy),                           //75
+					NewMovePickBoardToken(Philosophy),                       //76
 				},
 			},
 			want:    nil,
