@@ -41,7 +41,7 @@ func NewMovePrepare(p1, p2 Nickname, o Options) Mutator {
 	if o.PromoWonders {
 		wonderIds = R.wonderIds
 	} else {
-		wonderIds = slices.DeleteFunc(R.wonderIds, func(id WonderId) bool {
+		wonderIds = slices.DeleteFunc(slices.Clone(R.wonderIds), func(id WonderId) bool {
 			return id == Messe || id == StatueOfLiberty
 		})
 	}
