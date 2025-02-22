@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"errors"
 	"log"
+	"slices"
 )
 
 const (
@@ -28,14 +29,24 @@ type move struct {
 	Id MoveId `json:"id"`
 }
 
-func NewMovePrepare(p1, p2 Nickname) Mutator {
+func NewMovePrepare(p1, p2 Nickname, o Options) Mutator {
 	if randBool() {
 		p2, p1 = p1, p2
 	}
 
 	t := shuffleTokens(R.tokenIds)
 
-	w := shuffleWonders(R.wonderIds)
+	var wonderIds WonderList
+
+	if o.PromoWonders {
+		wonderIds = R.wonderIds
+	} else {
+		wonderIds = slices.DeleteFunc(R.wonderIds, func(id WonderId) bool {
+			return id == Messe || id == StatueOfLiberty
+		})
+	}
+
+	w := shuffleWonders(wonderIds)
 
 	c := map[Age]CardList{}
 

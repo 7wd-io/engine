@@ -202,9 +202,6 @@ func TestStateFrom(t *testing.T) {
 				t.Errorf("StateFrom() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			//if !reflect.DeepEqual(got, tt.want) {
-			//	t.Errorf("StateFrom() got = %v, want %v", got, tt.want)
-			//}
 		})
 	}
 }

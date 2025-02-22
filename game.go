@@ -13,3 +13,7 @@ type Burner interface {
 type Scorable interface {
 	GetPoints(s *State) int
 }
+
+type Options struct {
+	PromoWonders bool
+}
